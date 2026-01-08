@@ -1,0 +1,22 @@
+/* Main CSS File - Imports all modules */
+
+/* 1. Base Styles */
+@import 'base.css?v=2.0';
+
+/* 2. Layout & Utilities */
+@import 'layout.css?v=2.0';
+
+/* 3. Components */
+@import 'components/hero.css?v=2.0';
+@import 'components/buttons.css?v=2.0';
+@import 'components/cast-card.css?v=2.0';
+@import 'components/modals.css?v=2.0';
+@import 'components/gallery.css?v=2.0';
+@import 'components/theme-toggle.css?v=2.0';
+
+/* 4. Sections */
+@import 'sections/about.css?v=2.0';
+@import 'sections/awards.css?v=2.0';
+@import 'sections/premiere.css?v=2.0';
+@import 'sections/related.css?v=2.0';
+@import 'sections/footer.css?v=2.0';

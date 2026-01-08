@@ -1,0 +1,11 @@
+/* About Section */
+.about-section {
+    background-color: var(--bg-color);
+    text-align: center;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}

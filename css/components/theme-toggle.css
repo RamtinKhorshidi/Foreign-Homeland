@@ -1,0 +1,81 @@
+/**
+ * theme-toggle.css
+ * Styles for the dark/light mode switcher.
+ */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background: var(--card-bg);
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /* Continuous slow rotation animation */
+    animation: continuousRotation 20s linear infinite;
+}
+
+@keyframes continuousRotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.theme-toggle:hover {
+    /* Scale effect on hover while maintaining rotation via the animation */
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    border-color: #fff;
+}
+
+
+/* Toggle icon visibility */
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+.theme-toggle .moon-icon {
+    display: block;
+}
+
+body.light-mode .theme-toggle .sun-icon {
+    display: block;
+}
+
+body.light-mode .theme-toggle .moon-icon {
+    display: none;
+}
+
+/* Ensure sections adjust */
+body.light-mode .related-section {
+    background-color: #fcfcfc;
+}
+
+body.light-mode .cast-card {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .cast-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .theme-toggle {
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+    }
+}

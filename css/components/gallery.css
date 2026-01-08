@@ -1,0 +1,228 @@
+/* Premiere Gallery Styles */
+
+/* Gallery Slideshow (Background) */
+.gallery {
+    position: relative;
+    max-width: 100%;
+    display: grid;
+    grid-template-areas: "slide";
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.gallery img {
+    grid-area: slide;
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.gallery img.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Gallery Controls */
+.gallery-controls {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Gallery Modal Specifics (Flexbox Centered) */
+.gallery-modal {
+    display: none;
+    /* JS toggles this to flex */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    /* Darker background */
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+.gallery-modal .gallery-modal-content {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    max-width: 90vw;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main Image View */
+.gallery-main-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 90vh;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.gallery-image-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+#gallery-main-img {
+    max-height: 70vh;
+    max-width: 85vw;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+/* Navigation Buttons */
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+.gallery-nav:hover {
+    background: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.gallery-nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.gallery-nav.prev {
+    left: -70px;
+}
+
+.gallery-nav.next {
+    right: -70px;
+}
+
+/* Thumbnails Strip/Bar (Taskbar Style) */
+.gallery-thumbnails {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 12px;
+    background: rgba(15, 15, 15, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+    justify-content: center;
+    /* Use 'safe center' in modern browsers if needed */
+    align-items: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* Hide scrollbar for cleaner look but keep scrollable */
+.gallery-thumbnails::-webkit-scrollbar {
+    height: 4px;
+}
+
+.gallery-thumbnails::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.gallery-thumb {
+    height: 60px;
+    width: 100px;
+    /* Consistent size */
+    object-fit: cover;
+    /* Crop to fit */
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.5;
+    filter: grayscale(80%);
+    flex-shrink: 0;
+}
+
+.gallery-thumb:hover,
+.gallery-thumb.active {
+    border-color: var(--primary-color);
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+/* Close Button */
+.gallery-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.gallery-close:hover {
+    color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    .gallery-main-view {
+        height: 50vh;
+    }
+
+    .gallery-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+        margin: 0 10px;
+        border-width: 1px;
+    }
+
+    #gallery-main-img {
+        max-width: 90%;
+    }
+
+    .gallery-close {
+        top: 20px;
+        right: 20px;
+        font-size: 35px;
+    }
+}

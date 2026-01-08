@@ -1,0 +1,34 @@
+/* Layout and Common Grid/Flex Styles */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.section {
+    padding: 80px 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Common Heading Style */
+h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 0 auto 40px;
+    text-align: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 10px;
+    display: table;
+}
+
+/* Specific section adjustments if needed */
+.awards-section h2,
+.premiere-section h2,
+.about-section h2 {
+    margin-bottom: 60px;
+}

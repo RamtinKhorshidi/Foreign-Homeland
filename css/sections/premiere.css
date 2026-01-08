@@ -1,0 +1,19 @@
+/* Premiere Section */
+.premiere-section {
+    background-color: var(--bg-color);
+    text-align: center;
+}
+
+.premiere-date {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.premiere-desc {
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+/* Related Links moved to sections/related.css */

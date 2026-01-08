@@ -1,0 +1,100 @@
+/**
+ * hero.css
+ * Styles for the visual identity and hero section.
+ */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('../../images/The Film Poster/large-min.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    z-index: 2;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.film-title {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.film-title .word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.film-title .char-animate {
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: default;
+}
+
+.film-title .char-animate:hover {
+    transform: scale(1.15) translateY(-5px);
+    color: #fff;
+    text-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--primary-color);
+}
+
+.film-title .spacer {
+    display: inline-block;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .film-title {
+        font-size: 2rem;
+        /* Shrunk slightly more */
+        letter-spacing: 2px;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .film-title .word {
+        display: block;
+        line-height: 1.1;
+        white-space: normal;
+        /* Allow internal wrapping if word is very long */
+        word-break: break-word;
+    }
+
+    .film-title .spacer {
+        display: none;
+    }
+
+    .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('../../images/The Film Poster/post 1-min.jpg') no-repeat center center/cover;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+        padding: 0 20px;
+    }
+}
+
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, #111);
+    z-index: 1;
+    pointer-events: none;
+}

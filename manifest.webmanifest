@@ -1,0 +1,17 @@
+{
+    "name": "Foreign Homeland (2025)",
+    "short_name": "Foreign Homeland",
+    "description": "Original Motion Picture by Armin Zarringhalam",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#0a0a0a",
+    "icons": [
+        {
+            "src": "images/The Film Poster/post 1-min.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        }
+    ]
+}

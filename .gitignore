@@ -1,0 +1,17 @@
+# Firebase
+.firebase/
+firebase-debug.log
+firebug-*.log
+
+# Backups and temp files
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Command Logs (Agent history)
+.gemini/
+
+# Dependency folders
+node_modules/
+.vscode/
