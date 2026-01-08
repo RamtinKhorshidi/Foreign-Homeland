@@ -7,7 +7,7 @@ const actors = {
         name: 'Ramtin Khorshidi',
         role: 'Reza',
         img: 'images/Actor Photos/Reza.jpg/DSC00177-1-min.jpg',
-        bio: "Ramtin Khorshidi plays Reza, the eldest brother, in Foreign Homeland - a role that earned him Best Actor at the Vancouver International Youth Film Festival. He is a 21-year-old rapper and voice actor based in Calgary, known for his energetic performances and growing presence in the city's Iranian community. Ramtin has performed for crowds of 200-300 people and is now expanding into acting, with Foreign Homeland marking his first Canadian film project with Armin Productions. He's a collaborative artist who blends rap, pop, and traditional Iranian melodies to create his own unique sound. Fluent in Persian and Spanish, he writes and produces music in both languages. Ramtin is also beginning to build a career in advertising, showcasing his creativity across multiple fields."
+        bio: "Ramtin Khorshidi plays Reza, the eldest brother, in Foreign Homeland - a role that earned him Best Actor at the Vancouver International Youth Film Festival. He is a 22-year-old rapper and voice actor based in Calgary, known for his energetic performances and growing presence in the city's Iranian community. Ramtin has performed for crowds of 200-300 people and is now expanding into acting, with Foreign Homeland marking his first Canadian film project with Armin Productions. He's a collaborative artist who blends rap, pop, and traditional Iranian melodies to create his own unique sound. Fluent in Persian and Spanish, he writes and produces music in both languages. Ramtin is also beginning to build a career in advertising, showcasing his creativity across multiple fields."
     },
     'jamshid': {
         name: 'Mostafa Pouralamdari',
@@ -61,7 +61,7 @@ const actors = {
         name: 'Armin Zarringhalam',
         role: 'Producer, Director & Writer',
         img: 'images/Actor Photos/Cast and crew/Armin/DSC00081_compressed.jpg',
-        bio: "Armin Zarringhalam is a 22-year-old Canadian-Iranian award-winning filmmaker from Calgary, Alberta. He earned his Bachelor of Commerce in Marketing from the Haskayne School of Business and discovered his passion for filmmaking at 17. As the founder of Armin Productions, he has directed and produced several projects, leading creative teams and developing short films. He also secured funding for his first feature film, Foreign Homeland, where he served as the executive producer, director, and writer. Armin's work is inspired by his dual heritage, and he aims to create meaningful stories that connect with diverse audiences. Completing his debut feature marks an important step in his growth as a filmmaker."
+        bio: "Armin Zarringhalam is a 23-year-old Canadian-Iranian award-winning filmmaker from Calgary, Alberta. He earned his Bachelor of Commerce in Marketing from the Haskayne School of Business and discovered his passion for filmmaking at 17. As the founder of Armin Productions, he has directed and produced several projects, leading creative teams and developing short films. He also secured funding for his first feature film, Foreign Homeland, where he served as the executive producer, director, and writer. Armin's work is inspired by his dual heritage, and he aims to create meaningful stories that connect with diverse audiences. Completing his debut feature marks an important step in his growth as a filmmaker."
     },
     'sepidar': {
         name: 'Sepidar',
