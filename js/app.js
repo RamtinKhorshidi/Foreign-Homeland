@@ -542,7 +542,7 @@ function initTitleAnimation() {
 }
 
 function initButtonAnimation() {
-    const button = document.querySelector('.cta-button');
+    const button = document.querySelector('.btn-animated');
     if (button) {
         button.addEventListener('animationend', () => {
             const text = button.querySelector('.text');

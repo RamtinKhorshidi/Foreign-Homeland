@@ -1,5 +1,23 @@
 /* Button Components */
 .cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+/* New Animated Button Style (Localized) */
+.cta-button.btn-animated {
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: none;
     appearance: none;
@@ -20,7 +38,11 @@
     letter-spacing: 2px;
 }
 
-.cta-button:before {
+.cta-button.btn-animated:hover {
+    background-color: transparent;
+}
+
+.cta-button.btn-animated:before {
     --progress: 100%;
     background: var(--primary-color);
     -webkit-clip-path: polygon(100% 0,
@@ -38,25 +60,25 @@
     transition: clip-path 0.3s ease, -webkit-clip-path 0.3s ease;
 }
 
-.cta-button:hover:before {
+.cta-button.btn-animated:hover:before {
     --progress: 0%;
 }
 
-.cta-button .text-container {
+.cta-button.btn-animated .text-container {
     display: block;
     overflow: hidden;
     position: relative;
     z-index: 2;
 }
 
-.cta-button .text {
+.cta-button.btn-animated .text {
     display: block;
     font-weight: 900;
     position: relative;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.cta-button:hover .text {
+.cta-button.btn-animated:hover .text {
     animation: move-up-alternate 0.3s ease forwards;
     color: var(--bg-color);
 }
