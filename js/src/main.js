@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initModalListeners();
     initGalleryListeners();
     initTitleAnimation();
+    initButtonAnimation();
 
     // Attach functions to window for HTML inline event handlers
     // This allows onclick="openModal('id')" to work even with modules

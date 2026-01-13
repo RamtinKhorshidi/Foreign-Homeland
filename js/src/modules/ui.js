@@ -37,3 +37,18 @@ function initTitleAnimation() {
     });
 }
 
+function initButtonAnimation() {
+    const button = document.querySelector('.cta-button');
+    if (button) {
+        button.addEventListener('animationend', () => {
+            const text = button.querySelector('.text');
+            if (text) {
+                text.style.animation = 'none';
+                setTimeout(() => {
+                    text.style.animation = '';
+                }, 10);
+            }
+        });
+    }
+}
+

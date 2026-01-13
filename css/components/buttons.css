@@ -1,20 +1,66 @@
 /* Button Components */
 .cta-button {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 2px solid var(--primary-color);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--bg-color);
     color: var(--primary-color);
-    text-decoration: none;
+    cursor: pointer;
     font-family: var(--font-heading);
-    font-weight: 700;
-    transition: all 0.3s ease;
+    font-weight: 900;
+    line-height: 1.5;
+    padding: 1rem 2rem;
+    transition: color 0.3s ease;
+    border: 1px solid var(--primary-color);
+    position: relative;
+    text-transform: uppercase;
+    overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
     letter-spacing: 2px;
 }
 
-.cta-button:hover {
-    background-color: var(--primary-color);
+.cta-button:before {
+    --progress: 100%;
+    background: var(--primary-color);
+    -webkit-clip-path: polygon(100% 0,
+            var(--progress) var(--progress),
+            0 100%,
+            100% 100%);
+    clip-path: polygon(100% 0,
+            var(--progress) var(--progress),
+            0 100%,
+            100% 100%);
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: 1;
+    transition: clip-path 0.3s ease, -webkit-clip-path 0.3s ease;
+}
+
+.cta-button:hover:before {
+    --progress: 0%;
+}
+
+.cta-button .text-container {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-button .text {
+    display: block;
+    font-weight: 900;
+    position: relative;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover .text {
+    animation: move-up-alternate 0.3s ease forwards;
     color: var(--bg-color);
 }
+
 
 .award-btn {
     background-color: transparent;
@@ -45,4 +91,24 @@
 .cast-card:hover .more-btn {
     background: var(--primary-color);
     color: var(--bg-color);
+}
+
+
+
+@keyframes move-up-alternate {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-120%);
+    }
+
+    51% {
+        transform: translateY(120%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
