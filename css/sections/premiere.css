@@ -16,4 +16,8 @@
     margin: 0 auto 40px;
 }
 
+.gallery-controls {
+    margin-top: 40px;
+}
+
 /* Related Links moved to sections/related.css */
