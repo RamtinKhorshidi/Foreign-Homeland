@@ -1,4 +1,11 @@
-/* Button Components */
+/**
+ * Button Components
+ * -----------------------------------------------------------------------------
+ * Defines the various interactive button styles used across the project.
+ * Includes standard CTA buttons, animated landing buttons, and section-specific toggles.
+ */
+
+/* .cta-button: The standard outlined button used throughout the site. */
 .cta-button {
     display: inline-block;
     padding: 12px 30px;
@@ -16,7 +23,16 @@
     color: var(--bg-color);
 }
 
-/* New Animated Button Style (Localized) */
+/**
+ * .btn-animated (The "Meet the Cast" Button)
+ * -----------------------------------------------------------------------------
+ * A high-end cinematic button implementation featuring:
+ * 1. A diagonal clip-path reveal on hover.
+ * 2. A "move-up" text animation that creates a clean transition.
+ * 
+ * Chosen approach: Using CSS clip-path for the overlay allows for complex 
+ * geometric transitions that are hardware-accelerated.
+ */
 .cta-button.btn-animated {
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: none;
@@ -27,12 +43,13 @@
     font-family: var(--font-heading);
     font-weight: 900;
     line-height: 1.5;
-    padding: 1rem 2rem;
+    padding: 1.2rem 2.4rem;
     transition: color 0.3s ease;
     border: 1px solid var(--primary-color);
     position: relative;
     text-transform: uppercase;
     overflow: hidden;
+    /* Clips the inner diagonal reveal and text animation */
     display: inline-block;
     text-decoration: none;
     letter-spacing: 2px;
@@ -42,9 +59,11 @@
     background-color: transparent;
 }
 
+/* Pseudo-element for the diagonal background reveal animation. */
 .cta-button.btn-animated:before {
     --progress: 100%;
     background: var(--primary-color);
+    /* Creates a complex polygon that shifts on hover */
     -webkit-clip-path: polygon(100% 0,
             var(--progress) var(--progress),
             0 100%,
@@ -60,6 +79,7 @@
     transition: clip-path 0.3s ease, -webkit-clip-path 0.3s ease;
 }
 
+/* Trigger the clip-path expansion on hover */
 .cta-button.btn-animated:hover:before {
     --progress: 0%;
 }
@@ -69,6 +89,7 @@
     overflow: hidden;
     position: relative;
     z-index: 2;
+    /* Ensures text stays above the :before background overlay */
 }
 
 .cta-button.btn-animated .text {
@@ -78,12 +99,17 @@
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* On hover, trigger the "move-up-alternate" animation via app.js event handling */
 .cta-button.btn-animated:hover .text {
     animation: move-up-alternate 0.3s ease forwards;
     color: var(--bg-color);
 }
 
-
+/**
+ * .award-btn
+ * -----------------------------------------------------------------------------
+ * Specialized buttons for the Awards section triggers.
+ */
 .award-btn {
     background-color: transparent;
     color: var(--primary-color);
@@ -100,6 +126,11 @@
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
+/**
+ * .more-btn
+ * -----------------------------------------------------------------------------
+ * The smaller action button found inside Cast Cards.
+ */
 .more-btn {
     background: transparent;
     border: 1px solid var(--primary-color);
@@ -107,29 +138,40 @@
     padding: 8px 20px;
     cursor: pointer;
     font-family: var(--font-heading);
+    font-weight: bold;
     transition: all 0.3s ease;
 }
 
+/* Synchronization: The button lights up when its parent card is hovered. */
 .cast-card:hover .more-btn {
     background: var(--primary-color);
     color: var(--bg-color);
 }
 
 
-
+/**
+ * @keyframes move-up-alternate
+ * -----------------------------------------------------------------------------
+ * Creates a "slot machine" style text swap effect.
+ * The text slides up out of view at the top, instantly teleports to the bottom, 
+ * and slides back into the center.
+ */
 @keyframes move-up-alternate {
     0% {
         transform: translateY(0);
     }
 
+    /* First half: Exit stage top */
     50% {
         transform: translateY(-120%);
     }
 
+    /* Instantaneous reset stage bottom */
     51% {
         transform: translateY(120%);
     }
 
+    /* Second half: Re-enter center */
     100% {
         transform: translateY(0);
     }

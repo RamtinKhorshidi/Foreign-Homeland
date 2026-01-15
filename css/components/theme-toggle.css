@@ -1,12 +1,14 @@
 /**
- * theme-toggle.css
- * Styles for the dark/light mode switcher.
+ * Theme Toggle Component
+ * -----------------------------------------------------------------------------
+ * Styles for the fixed circular button that switches the UI between Light and Dark.
  */
 .theme-toggle {
     position: fixed;
     top: 20px;
     left: 20px;
     z-index: 1001;
+    /* High z-index ensures it stays above almost all other UI elements */
     background: var(--card-bg);
     border: 1px solid var(--primary-color);
     border-radius: 50%;
@@ -20,7 +22,9 @@
     color: var(--primary-color);
     transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    /* Continuous slow rotation animation */
+
+    /* Feature: Continuous slow rotation gives the button a "celestial" or
+       mechanical feel, fitting the theme of a film about time and distance. */
     animation: continuousRotation 20s linear infinite;
 }
 
@@ -35,13 +39,15 @@
 }
 
 .theme-toggle:hover {
-    /* Scale effect on hover while maintaining rotation via the animation */
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
     border-color: #fff;
 }
 
 
-/* Toggle icon visibility */
+/* Toggle Icon Logic:
+   Standard state (Dark Mode) shows the Moon.
+   Light Mode shows the Sun.
+*/
 .theme-toggle .sun-icon {
     display: none;
 }
@@ -58,12 +64,18 @@ body.light-mode .theme-toggle .moon-icon {
     display: none;
 }
 
-/* Ensure sections adjust */
+/**
+ * Light Mode Stylistic Tweaks
+ * -----------------------------------------------------------------------------
+ * These overrides ensure that sections designed for a black background
+ * still look premium and readable when the theme is flipped.
+ */
 body.light-mode .related-section {
     background-color: #fcfcfc;
 }
 
 body.light-mode .cast-card {
+    /* Softer shadows for light mode. */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 

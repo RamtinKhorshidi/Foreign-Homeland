@@ -1,80 +1,95 @@
 /**
- * gallery.js
- * Handles the manual interaction for the Premiere Photo Gallery Modal.
- * Dependencies: js/data/gallery.js, js/modules/carousel.js (stopCarousel, startCarousel)
+ * Interactive Gallery Module
+ * -----------------------------------------------------------------------------
+ * Handles the logic for the full-screen photo gallery located in the 
+ * Premiere section. Includes thumbnail generation, keyboard navigation, 
+ * and background carousel synchronization.
  */
 
-let currentGalleryIndex = 0;
+let currentImageIndex = 0; // The index of the photo currently being viewed.
 
 /**
- * Opens the gallery modal, stops the main page carousel, 
- * and initializes thumbnails if they don't exist.
+ * Launches the full-screen gallery view.
+ * 
+ * Logic flow:
+ * 1. Pauses the main background carousel to improve focus and performance.
+ * 2. Resets the view to the first image.
+ * 3. Just-in-time generates the thumbnail strip.
  */
 function openGalleryModal() {
     const modal = document.getElementById('gallery-modal');
-    const thumbsContainer = document.getElementById('gallery-thumbnails');
+    stopCarousel(); // Synchronize with carousel.js to avoid background movement.
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
 
-    // Stop the auto-carousel on main page
-    stopCarousel();
-
-    // Reset to first image
-    currentGalleryIndex = 0;
+    // Show the first image by default unless otherwise specified.
+    currentImageIndex = 0;
     updateGalleryView();
 
-    // Generate thumbnails if empty
-    if (thumbsContainer.querySelectorAll('.gallery-thumb').length === 0) {
-        galleryImages.forEach((src, index) => {
-            const thumb = document.createElement('img');
-            thumb.src = src;
-            thumb.className = 'gallery-thumb';
-            thumb.alt = `Thumbnail ${index + 1}`;
-            thumb.onclick = () => {
-                currentGalleryIndex = index;
-                updateGalleryView();
-            };
-            thumbsContainer.appendChild(thumb);
-        });
-    }
+    // build thumbnails once the modal is opening.
+    const thumbContainer = document.getElementById('gallery-thumbnails');
+    thumbContainer.innerHTML = ''; // prevent duplicates on reopen.
 
-    modal.style.display = 'flex'; // Use flex for centering
-    document.body.style.overflow = 'hidden';
+    galleryImages.forEach((src, index) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'gallery-thumb';
+        // highlight the currently active thumbnail immediately.
+        if (index === currentImageIndex) img.classList.add('active');
+
+        // provide a direct navigation path for each thumbnail.
+        img.onclick = () => {
+            currentImageIndex = index;
+            updateGalleryView();
+        };
+        thumbContainer.appendChild(img);
+    });
 }
 
 /**
- * Closes the gallery modal and resumes the main page carousel.
+ * Closes the gallery and allows the background carousel to resume.
  */
 function closeGalleryModal() {
     const modal = document.getElementById('gallery-modal');
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
-
-    // Resume auto-carousel
-    startCarousel();
+    initCarousel(); // Restart the carousel background if it's visible.
 }
 
 /**
- * Changes the currently displayed image by a given direction.
- * @param {number} direction - The number of steps to move (e.g., 1 for next, -1 for prev).
+ * Steps forward or backward through the gallery images.
+ * Implements "circular" navigation (wrapping from last to first).
+ * 
+ * @param {number} direction - 1 for Next, -1 for Previous.
  */
 function changeGalleryImage(direction) {
-    currentGalleryIndex += direction;
-    if (currentGalleryIndex >= galleryImages.length) currentGalleryIndex = 0;
-    if (currentGalleryIndex < 0) currentGalleryIndex = galleryImages.length - 1;
+    currentImageIndex += direction;
+
+    if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0; // Wrap to start.
+    } else if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1; // Wrap to end.
+    }
+
     updateGalleryView();
 }
 
 /**
- * Updates the main image and active thumbnail highlight based on currentGalleryIndex.
+ * Synchronizes the visual state of the gallery modal based on `currentImageIndex`.
+ * Updates both the large main image and the highlighting in the thumbnail strip.
  */
 function updateGalleryView() {
     const mainImg = document.getElementById('gallery-main-img');
-    const thumbs = document.querySelectorAll('.gallery-thumb');
+    const thumbnails = document.querySelectorAll('.gallery-thumb');
 
-    mainImg.src = galleryImages[currentGalleryIndex];
+    // Update main image source.
+    mainImg.src = galleryImages[currentImageIndex];
 
-    thumbs.forEach((thumb, index) => {
-        if (index === currentGalleryIndex) {
+    // Synchronize thumbnail state.
+    thumbnails.forEach((thumb, index) => {
+        if (index === currentImageIndex) {
             thumb.classList.add('active');
+            // chosen approach for scrolling: ensuring the active thumb is visible.
             thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
             thumb.classList.remove('active');
@@ -83,33 +98,30 @@ function updateGalleryView() {
 }
 
 /**
- * Initializes click and keyboard listeners for gallery navigation.
+ * Gallery Specific Global Listeners
+ * -----------------------------------------------------------------------------
+ * Adds keyboard support for accessibility and "power user" navigation.
  */
 function initGalleryListeners() {
-    const prevBtn = document.getElementById('gallery-prev');
-    const nextBtn = document.getElementById('gallery-next');
+    const modal = document.getElementById('gallery-modal');
 
-    if (prevBtn) {
-        prevBtn.onclick = () => changeGalleryImage(-1);
-    }
-    if (nextBtn) {
-        nextBtn.onclick = () => changeGalleryImage(1);
-    }
-
-    window.addEventListener('click', function (event) {
-        const galleryModal = document.getElementById('gallery-modal');
-        if (event.target == galleryModal) {
-            closeGalleryModal();
+    document.addEventListener('keydown', (e) => {
+        // These shortcuts only execute if the gallery modal is currently active.
+        if (modal.style.display === 'flex') {
+            if (e.key === 'ArrowRight') {
+                changeGalleryImage(1);
+            } else if (e.key === 'ArrowLeft') {
+                changeGalleryImage(-1);
+            } else if (e.key === 'Escape') {
+                closeGalleryModal();
+            }
         }
     });
 
-    // Keyboard navigation
-    window.addEventListener('keydown', function (event) {
-        const galleryModal = document.getElementById('gallery-modal');
-        if (galleryModal.style.display === 'flex') {
-            if (event.key === 'ArrowLeft') changeGalleryImage(-1);
-            if (event.key === 'ArrowRight') changeGalleryImage(1);
-            if (event.key === 'Escape') closeGalleryModal();
+    // Handle clicking the background backdrop to exit.
+    modal.addEventListener('click', (e) => {
+        if (e.target.id === 'gallery-modal') {
+            closeGalleryModal();
         }
     });
 }

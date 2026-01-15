@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foreign Homeland (2025) | A Film by Armin Zarringhalam</title>
+
+    <!-- SEO & Metadata -->
     <meta name="description"
         content="Foreign Homeland - A poignant cinematic journey about a father and his three children fleeing Iran to find the true meaning of home in Calgary, Canada. Directed by Armin Zarringhalam.">
     <link rel="canonical" href="https://foreign-homeland-web.web.app">
     <meta name="theme-color" content="#0a0a0a">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Meta tags for social sharing (Facebook, LinkedIn, etc.) -->
     <meta property="og:type" content="video.movie">
     <meta property="og:url" content="https://foreign-homeland-web.web.app">
     <meta property="og:title" content="Foreign Homeland (2025) | Original Motion Picture">
@@ -18,7 +20,7 @@
         content="Discovering the true meaning of home in a foreign land. A story of migration, family, and resilience.">
     <meta property="og:image" content="https://foreign-homeland-web.web.app/images/The%20Film%20Poster/large-min.jpg">
 
-    <!-- Twitter -->
+    <!-- Twitter Card metadata for rich sharing on X/Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://foreign-homeland-web.web.app">
     <meta property="twitter:title" content="Foreign Homeland (2025)">
@@ -27,7 +29,10 @@
     <meta property="twitter:image"
         content="https://foreign-homeland-web.web.app/images/The%20Film%20Poster/large-min.jpg">
 
-    <!-- Structured Data: Movie Schema -->
+    <!-- Structured Data: Movie Schema 
+         Purpose: Helps search engines (Google) understand the content as a movie, 
+         improving search result presentation (rich snippets).
+    -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,37 +66,53 @@
     }
     </script>
 
+    <!-- Project Stylesheet: v=2.0 used for cache busting during deployments -->
     <link rel="stylesheet" href="css/main.css?v=2.0">
 
+    <!-- Progressive Web App & Fonts -->
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
         rel="stylesheet">
+
+    <!-- Performance Optimization: Preload hero posters for faster LCP (Largest Contentful Paint) -->
     <link rel="preload" as="image" href="images/The Film Poster/large-min.jpg" media="(min-width: 769px)">
     <link rel="preload" as="image" href="images/The Film Poster/post 1-min.jpg" media="(max-width: 768px)">
+
+    <!-- FontAwesome: Icons for UI elements like arrows and social links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- Theme Toggle Fixed Button: Switches between Light and Dark mode -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
         <span class="sun-icon">☀️</span>
         <span class="moon-icon">🌙</span>
     </button>
+
+    <!-- HERO Section: The cinematic introduction to the site -->
     <header class="hero">
         <div class="hero-content">
             <h1 class="film-title">FOREIGN HOMELAND</h1>
             <p class="tagline">Discovering the true meaning of home in a foreign land.</p>
-            <a href="#cast" class="cta-button btn-animated">
-                <span class="text-container">
-                    <span class="text">Meet the Cast</span>
-                </span>
-            </a>
+            <!-- Call to Action: Cinematic buttons with custom reveal animation -->
+            <div class="hero-btns">
+                <a href="#cast" class="cta-button btn-animated">
+                    <span class="text-container">
+                        <span class="text">Meet the Cast</span>
+                    </span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=gXre6qjlM18" target="_blank" class="cta-button btn-animated">
+                    <span class="text-container">
+                        <span class="text">Watch the Trailer</span>
+                    </span>
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Summary Section -->
+    <!-- SUMMARY Section: Overview of the film's premise -->
     <section id="about" class="section about-section">
         <div class="container">
             <h2>The Story</h2>
@@ -100,14 +121,13 @@
         </div>
     </section>
 
-    <!-- Awards Section -->
+    <!-- AWARDS Section: Festival recognition and laurels -->
     <section id="awards" class="section awards-section">
         <div class="container">
             <h2>Awards & Selections</h2>
 
-            <!-- Best Actor Button -->
+            <!-- Interactive Award Detail Triggers -->
             <div class="awards-trigger-container">
-
                 <div class="award-buttons">
                     <button onclick="openAwardModal('best-canadian-feature')" class="cta-button award-btn">View Best
                         Canadian
@@ -117,7 +137,7 @@
                 </div>
 
 
-                <!-- Laurels Grid -->
+                <!-- Laurels Grid: Showcase of international festival selections -->
                 <div class="laurels-grid">
                     <img src="assets/awards/BEST_DEBUT_FEATURE_FILM_Makizhmithran_International_Film_Festival.png"
                         alt="Best Debut Feature Film" loading="lazy" decoding="async" width="120" height="120">
@@ -148,16 +168,15 @@
                     <img src="assets/awards/WHITE_HM.png" alt="Honorable Mention" loading="lazy" decoding="async"
                         width="120" height="120">
                 </div>
-
             </div>
     </section>
 
-    <!-- Cast Section -->
+    <!-- CAST & CREW Section: Grid of key production members -->
     <section id="cast" class="section cast-section">
         <div class="container">
             <h2>Cast & Crew</h2>
             <div class="cast-grid">
-                <!-- Cast Members -->
+                <!-- Each cast card triggers a biometric modal via app.js -->
                 <div class="cast-card" onclick="openModal('sara')">
                     <div class="card-image-wrapper">
                         <img src="images/Actor Photos/Sara.jpg/DSC00188-min.jpg" alt="Zahra Masoumi as Sara"
@@ -318,7 +337,7 @@
         </div>
     </section>
 
-    <!-- Premiere Section -->
+    <!-- PREMIERE Section: Media coverage and high-resolution gallery of the Calgary premiere -->
     <section id="premiere" class="section premiere-section">
         <div class="container">
             <h2>World Red Carpet Premiere</h2>
@@ -329,6 +348,8 @@
                 This marks the first-ever Iranian red-carpet movie premiere in Calgary, a milestone not just for our
                 team, but also for the Persian community and Alberta's growing independent film scene.
             </p>
+
+            <!-- Premiere Background Slideshow: State is managed by carousel.js -->
             <div class="gallery">
                 <img src="images/Premiere Photos/_DSC8209-min.JPG" alt="Premiere Event 1" class="premiere-slide active"
                     loading="lazy" decoding="async" width="1200" height="800">
@@ -350,13 +371,14 @@
 
             </div>
 
+            <!-- Full Gallery View Trigger -->
             <div class="gallery-controls">
                 <button onclick="openGalleryModal()" class="cta-button gallery-btn">View Gallery</button>
             </div>
         </div>
     </section>
 
-    <!-- Related Links Section -->
+    <!-- RELATED LINKS Section: Social presence and IMDB listings -->
     <section id="related" class="section related-section">
         <div class="container">
             <h2>Related Links</h2>
@@ -379,32 +401,35 @@
     </section>
 
 
-    <!-- Footer -->
+    <!-- FOOTER: Standard copyright and credits -->
     <footer>
         <p>&copy; 2025 Armin Productions. All Rights Reserved.</p>
     </footer>
 
-    <!-- Actor Modal -->
+    <!-- MODAL OVERLAYS: These elements are hidden by default and populated via JavaScript (app.js) -->
+
+    <!-- Actor Biography Modal -->
     <div id="actor-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <div class="modal-body">
-                <img id="modal-img" src="" alt="">
+                <img id="modal-img" src="" alt="Actor Photo">
                 <div class="modal-text">
                     <h2 id="modal-name"></h2>
                     <h3 id="modal-role"></h3>
                     <p id="modal-bio"></p>
+                    <!-- JavaScript will inject an Instagram button here if a link exists -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Award Modal -->
+    <!-- Award Details Modal -->
     <div id="award-modal" class="modal">
         <div class="modal-content award-modal-content">
             <span class="close-btn" onclick="closeAwardModal()">&times;</span>
             <div class="modal-body">
-                <img src="" alt="" id="award-img">
+                <img src="" alt="Award Ceremony Photo" id="award-img">
                 <div class="modal-text">
                     <img src="" alt="Award Logo" class="award-logo-small">
                     <h2></h2>
@@ -418,32 +443,34 @@
         </div>
     </div>
 
-    <!-- Premiere Gallery Modal -->
+    <!-- Full-Screen Interactive Premiere Gallery Modal -->
     <div id="gallery-modal" class="modal gallery-modal">
         <span class="close-btn gallery-close" onclick="closeGalleryModal()">&times;</span>
         <div class="gallery-modal-content">
             <div class="gallery-main-view">
+                <!-- Navigation controls: repositioned for mobile in gallery.css -->
                 <div class="gallery-image-container">
                     <button id="gallery-prev" class="gallery-nav prev" aria-label="Previous image">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <img id="gallery-main-img" src="" alt="Gallery Image">
+                    <img id="gallery-main-img" src="" alt="Gallery Image High-Res">
                     <button id="gallery-next" class="gallery-nav next" aria-label="Next image">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
+                <!-- Thumbnail bar: populated dynamically from galleryImages array -->
                 <div class="gallery-thumbnails" id="gallery-thumbnails">
-                    <!-- Thumbnails injected via JS -->
+                    <!-- Thumbnails injected via gallery.js -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Application Scripts -->
-    <!-- Libraries & Assets -->
+    <!-- APPLICATION SCRIPTS: Logic and 3rd-party libraries -->
+    <!-- FontAwesome JS: Required for icon rendering and SVG accessibility -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" defer></script>
 
-    <!-- Optimized Application Bundle -->
+    <!-- Project Bundle: Contains all data and modules merged for performance -->
     <script src="js/app.js" defer></script>
 
 </body>

@@ -1,9 +1,14 @@
 /**
- * modals.js
- * Generic modal layout and transition styles.
+ * Modal Framework Styles
+ * -----------------------------------------------------------------------------
+ * Provides the visual foundation for all full-screen overlays, including 
+ * cast biographies and award details.
  */
+
+/* .modal: The dark, blurred backdrop that appears over the main content. */
 .modal {
     display: none;
+    /* Controlled via app.js */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -11,15 +16,18 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
+    /* Frosted glass effect for a premium aesthetic. */
     backdrop-filter: blur(5px);
     animation: fadeIn 0.3s;
 }
 
+/* .modal-content: The actual floating card containing the information. */
 .modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* Centers the absolute element perfectly */
     background-color: var(--card-bg);
     width: 90%;
     max-width: 800px;
@@ -55,6 +63,7 @@
     max-height: 80vh;
 }
 
+/* Inherited H2 overrides to fit better in a small card layout. */
 .modal-text h2 {
     text-align: left;
     left: 0;
@@ -62,15 +71,17 @@
     margin-bottom: 10px;
     border: none;
     padding: 0;
+    display: block;
 }
 
 .modal-text h3 {
     color: #aaa;
     margin-bottom: 20px;
+    font-size: 1.1rem;
     font-style: italic;
 }
 
-/* Award Modal Specifics */
+/* --- Award Modal Specific Design --- */
 .award-modal-content {
     max-width: 1000px;
     background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
@@ -118,6 +129,10 @@
     padding-left: 20px;
 }
 
+/**
+ * Social Media Button
+ * Dynamically injected into actor modals via app.js logic.
+ */
 .modal-social-btn {
     display: inline-flex;
     align-items: center;
@@ -135,64 +150,51 @@
     transition: all 0.3s ease;
 }
 
-.modal-social-btn svg {
-    width: 20px;
-    height: 20px;
-}
-
 .modal-social-btn:hover {
     background-color: var(--primary-color);
     color: var(--bg-color);
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
+/**
+ * Mobile Modal Responsiveness
+ * -----------------------------------------------------------------------------
+ * Switches the 'flex-direction' from row to column on smaller screens.
+ * This ensures that the person's photo and biography stack vertically.
+ */
 @media (max-width: 768px) {
-
-    /* Stack modal content vertically on mobile */
     .modal-content {
         flex-direction: column;
         height: 90vh;
-        /* Maintain max height on mobile */
         width: 95%;
-        /* Slightly wider on mobile for more space */
         overflow-y: auto;
     }
 
-    /* Set modal body to stack its children (img and text) vertically */
     .modal-body {
         flex-direction: column;
         display: flex;
-        /* Ensure flex behavior */
     }
 
     .award-modal-content {
         flex-direction: column;
     }
 
-    /* Ensure images take full width of the modal on mobile */
     #modal-img,
     #award-img {
         width: 100%;
         height: auto;
-        /* Allow height to adjust naturally */
         max-height: 40vh;
-        /* Prevent image from taking over the entire screen */
         object-fit: cover;
     }
 
-    /* Remove right border on award image and add bottom border for vertical stack */
     #award-img {
         border-right: none;
         border-bottom: 1px solid #333;
     }
 
-    /* Expand text area to full width and adjust padding for mobile */
     .modal-text {
         width: 100% !important;
-        /* Force full width on mobile */
         padding: 25px 20px;
-        /* Comfortable padding for readability */
         max-height: none;
-        /* Let it take natural height as content dictates */
     }
 }

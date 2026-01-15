@@ -1,15 +1,14 @@
-/* Related Links Section */
+/**
+ * Related Links & Social Icons
+ * -----------------------------------------------------------------------------
+ * Displays official social media handles and external database links (IMDb, etc.)
+ */
+
 .related-section {
     background-color: var(--card-bg);
-    /* Distinct background */
+    /* Uses a distinct background to separate from 'Premiere' */
     text-align: center;
     padding: 80px 20px;
-}
-
-.related-section h2 {
-    left: auto;
-    transform: none;
-    display: inline-block;
 }
 
 .social-icons {
@@ -19,6 +18,11 @@
     margin-top: 40px;
 }
 
+/**
+ * .social-link
+ * -----------------------------------------------------------------------------
+ * Individual circular branding links.
+ */
 .social-link {
     color: var(--primary-color);
     transition: all 0.3s ease;
@@ -35,9 +39,9 @@
     width: 40px;
     height: 40px;
     object-fit: contain;
-    /* Ensure image scales correctly */
 }
 
+/* Hover effect: Swaps colors and adds a cinematic glow. */
 .social-link:hover {
     color: var(--bg-color);
     background-color: var(--primary-color);
@@ -47,8 +51,14 @@
 
 .social-link:hover img {
     filter: brightness(0);
+    /* Turns logos black on gold hover background */
 }
 
+/**
+ * IMDb Branding
+ * -----------------------------------------------------------------------------
+ * Custom styling to mimic the IMDb brand identity using standard fonts.
+ */
 .imdb-icon-text {
     font-family: 'Impact', 'Arial Black', sans-serif;
     font-weight: 900;

@@ -1,54 +1,79 @@
 /**
- * ui.js
- * Handles general UI animations and enhancements.
+ * UI Animation Module
+ * -----------------------------------------------------------------------------
+ * Manages specialized cinematic visual effects and micro-interactions.
+ * Key focus: The animated film title and high-impact CTA buttons.
  */
 
+/**
+ * Creates the "Staggered Entrance" effect for the film title.
+ * 
+ * Logic flow:
+ * 1. Takes the text content of `.film-title`.
+ * 2. Splices it into individual words and characters.
+ * 3. Wraps each character in a `span` with an incremental animation delay.
+ * 4. This allows for a smooth, progressive reveal rather than a static fade.
+ */
 function initTitleAnimation() {
     const title = document.querySelector('.film-title');
     if (!title) return;
 
-    const text = title.textContent.trim();
-    title.innerHTML = '';
+    const originalText = title.textContent.trim();
+    const words = originalText.split(' ');
+    title.innerHTML = ''; // Reset for injection.
 
-    // Split text into words first
-    const words = text.split(' ');
-
-    words.forEach((word, index) => {
+    words.forEach((word, wordIndex) => {
         const wordSpan = document.createElement('span');
         wordSpan.className = 'word';
 
-        // Split word into characters
-        word.split('').forEach(char => {
+        const characters = word.split('');
+        characters.forEach((char, charIndex) => {
             const charSpan = document.createElement('span');
             charSpan.textContent = char;
             charSpan.className = 'char-animate';
+
+            // Incremental delay creates the "typing" or "staggered" feel.
+            const globalIndex = (wordIndex * 5) + charIndex;
+            charSpan.style.animationDelay = `${globalIndex * 0.1}s`;
+
             wordSpan.appendChild(charSpan);
         });
 
         title.appendChild(wordSpan);
 
-        // Add spacer between words, but not after the last word
-        if (index < words.length - 1) {
+        // Append a space between words unless it's the last word.
+        if (wordIndex < words.length - 1) {
             const spacer = document.createElement('span');
-            spacer.innerHTML = '&nbsp;';
             spacer.className = 'spacer';
+            spacer.innerHTML = '&nbsp;';
             title.appendChild(spacer);
         }
     });
 }
 
+/**
+ * Manages the high-end button animation state.
+ * Specifically handles the "Meet the Cast" button transition reset.
+ */
 function initButtonAnimation() {
-    const button = document.querySelector('.btn-animated');
-    if (button) {
-        button.addEventListener('animationend', () => {
-            const text = button.querySelector('.text');
-            if (text) {
-                text.style.animation = 'none';
-                setTimeout(() => {
-                    text.style.animation = '';
-                }, 10);
-            }
-        });
-    }
-}
+    const animatedBtns = document.querySelectorAll('.btn-animated');
+    if (!animatedBtns.length) return;
 
+    animatedBtns.forEach(animatedBtn => {
+        const textElement = animatedBtn.querySelector('.text');
+        if (!textElement) return;
+
+        /**
+         * Why `animationend`? 
+         * To prevent animation artifacts or weird states when a user hovers 
+         * rapidly in and out of the button.
+         */
+        textElement.addEventListener('animationend', () => {
+            // Cleaning up the style allows the animation to be re-triggered cleanly next time.
+            textElement.style.animation = 'none';
+            // forced reflow: a hack to ensure the browser registers the removal before the addition.
+            textElement.offsetHeight;
+            textElement.style.animation = null;
+        });
+    });
+}

@@ -1,11 +1,20 @@
 /**
- * modals.js
- * Unified modal management for actor biographies and award details.
+ * Modal Management Module
+ * -----------------------------------------------------------------------------
+ * Provides core functionality for displaying and hiding full-screen modals.
+ * This includes the biographical modals for the cast and the awards detail modals.
  */
 
 /**
  * Opens a modal for a specific cast/crew member.
- * @param {string} actorKey - The ID of the actor in js/data/actors.js
+ * 
+ * Logic flow:
+ * 1. Identify the actor from the `actors` data object.
+ * 2. Update DOM elements (image, name, role, bio) with the actor's data.
+ * 3. Check for any social media links and dynamically create an Instagram button.
+ * 4. Display the modal and freeze body scrolling for a focused experience.
+ * 
+ * @param {string} actorKey - The unique slug for the actor (e.g., 'reza').
  */
 function openModal(actorKey) {
     const modal = document.getElementById('actor-modal');
@@ -17,18 +26,19 @@ function openModal(actorKey) {
 
     const actor = actors[actorKey];
     if (actor) {
+        // Update basic text and image content.
         modalImg.src = actor.img;
         modalName.textContent = actor.name;
         modalRole.textContent = actor.role;
         modalBio.textContent = actor.bio;
 
-        // Remove existing social button if any
+        // Cleanup: Remove existing social button from a previous modal opening.
         const existingBtn = modalText.querySelector('.modal-social-btn');
         if (existingBtn) {
             existingBtn.remove();
         }
 
-        // Add social link if exists
+        // Feature Enhancement: Social Media Integration
         const socialUrl = socialLinks[actorKey];
         if (socialUrl) {
             const socialBtn = document.createElement('a');
@@ -46,24 +56,28 @@ function openModal(actorKey) {
             modalText.appendChild(socialBtn);
         }
 
+        // Show the modal.
         modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        // chosen approach for scrolling: setting overflow to hidden on body.
+        // potential gotcha: layout shift on some browsers due to scrollbar disappearing.
+        document.body.style.overflow = 'hidden';
     }
 }
 
 /**
- * Closes the actor modal and re-enables body scrolling.
+ * Closes the biography modal and restores standard page navigation.
  */
 function closeModal() {
     const modal = document.getElementById('actor-modal');
     modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Enable scrolling
+    document.body.style.overflow = 'auto'; // Re-enable interaction with the rest of the site.
 }
 
-// Award Modal
 /**
- * Opens the award modal with specific award data.
- * @param {string} awardKey - The key in awardsData (from js/data/awards.js)
+ * Opens a specialized modal for displaying film award details.
+ * Similar logic to `openModal` but tailored for the `awardsData` schema.
+ * 
+ * @param {string} awardKey - The slug for the award (e.g., 'best-actor').
  */
 function openAwardModal(awardKey) {
     const modal = document.getElementById('award-modal');
@@ -90,7 +104,7 @@ function openAwardModal(awardKey) {
 }
 
 /**
- * Closes the award modal and re-enables body scrolling.
+ * Closes the award details modal.
  */
 function closeAwardModal() {
     const modal = document.getElementById('award-modal');
@@ -98,14 +112,17 @@ function closeAwardModal() {
     document.body.style.overflow = 'auto';
 }
 
-
 /**
- * Initializes global click listeners to close modals when clicking outside them.
+ * Global Modal Event Listeners
+ * -----------------------------------------------------------------------------
+ * Provides a "click outside to close" behavior for all standard modals.
+ * Improves user experience by following native OS modal patterns.
  */
 function initModalListeners() {
     window.onclick = function (event) {
         const actorModal = document.getElementById('actor-modal');
         const awardModal = document.getElementById('award-modal');
+        // If the user clicks specifically on the modal backdrop, close it.
         if (event.target == actorModal) {
             closeModal();
         }

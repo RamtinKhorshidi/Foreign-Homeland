@@ -1,28 +1,53 @@
+/**
+ * Design System - CSS Variables
+ * -----------------------------------------------------------------------------
+ * This project uses a CSS custom property (variable) system to maintain 
+ * consistency across themes (Light/Dark).
+ * 
+ * --primary-color: The signature gold accent used for headings, borders, and buttons.
+ * --bg-color: The main background color for the viewport.
+ * --text-color: The default color for body copy and icons.
+ * --card-bg: A slightly offset background color for cards/modals to create depth.
+ * --font-heading: 'Cinzel' (Serif) is used for titles to convey a classic cinema feel.
+ * --font-body: 'Lato' (Sans-Serif) is used for readability across all screen sizes.
+ */
 :root {
     --primary-color: #d4af37;
     /* Gold */
     --bg-color: #0a0a0a;
-    /* Deep Black */
+    /* Deep Black (Cinematic default) */
     --text-color: #e0e0e0;
-    /* Off-white */
+    /* Off-white for high contrast on black */
     --card-bg: #141414;
-    /* Dark Gray */
+    /* Subtle lift from background */
     --font-heading: 'Cinzel', serif;
     --font-body: 'Lato', sans-serif;
 }
 
+/**
+ * Light Mode Overrides
+ * -----------------------------------------------------------------------------
+ * Triggered by the `.light-mode` class on the body (see js/modules/theme.js).
+ * Colors are inverted while maintaining the primary gold accent.
+ */
 body.light-mode {
     --bg-color: #ffffff;
     --text-color: #1a1a1a;
     --card-bg: #f5f5f5;
     --primary-color: #b8860b;
-    /* Darker gold for better contrast on light */
+    /* Darker gold for better contrast on light backgrounds */
 }
 
+/**
+ * Base Reset & Typography
+ * -----------------------------------------------------------------------------
+ * Ensures standard browser behavior and sets up the foundational appearance.
+ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Ensures padding/borders don't affect element width */
 }
 
 html,
@@ -32,6 +57,7 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
+    /* Critical for mobile to prevent unwanted horizontal scrolling */
     width: 100%;
 }
 

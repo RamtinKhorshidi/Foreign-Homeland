@@ -1,7 +1,16 @@
 /**
- * socials.js
- * Contains social media links for cast and crew.
- * Keys match the IDs used in actors.js and openModal calls.
+ * socialLinks
+ * -----------------------------------------------------------------------------
+ * Maps actor/crew IDs to their respective Instagram profiles.
+ * 
+ * Purpose:
+ * This data is used within the `openModal` function to append a "Follow on Instagram" 
+ * button to the biography modal if a link exists for that person.
+ * 
+ * Design Decision:
+ * Keeping social links separate from the main actor data allows for easier 
+ * updates and maintains a clean separation of biographical content and 
+ * external social media handles.
  */
 const socialLinks = {
     'reza': 'https://www.instagram.com/rami.momti?igsh=MWJ0angzazgzNGh5Nw==',       // Ramtin

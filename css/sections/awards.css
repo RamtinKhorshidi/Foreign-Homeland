@@ -1,4 +1,9 @@
-/* Awards Section */
+/**
+ * Awards & Selections Section
+ * -----------------------------------------------------------------------------
+ * Displays the film's accolades and festival selections.
+ */
+
 .awards-section {
     background-color: var(--bg-color);
     text-align: center;
@@ -36,8 +41,12 @@
     }
 }
 
-
-
+/**
+ * Laurels Grid
+ * -----------------------------------------------------------------------------
+ * A flexible collection of festival logos (laurels).
+ * Designed to wrap gracefully on mobile devices.
+ */
 .laurels-grid {
     display: flex;
     flex-wrap: wrap;
@@ -73,11 +82,17 @@
     max-height: 100px;
     opacity: 0.8;
     transition: all 0.3s ease;
+    /* Default: Grayscale for a unified, elegant look regardless of logo source. */
     filter: grayscale(100%);
 }
 
+/**
+ * Light Mode Logo Optimization
+ * -----------------------------------------------------------------------------
+ * White/Gold laurels often disappear against a light background.
+ * We apply a 'brightness(0.4)' filter to darken them in Light Mode.
+ */
 body.light-mode .laurels-grid img {
-    /* Set logos to dark gray for high contrast against white background in light mode */
     filter: grayscale(100%) brightness(0.4);
     opacity: 0.9;
 }
@@ -89,6 +104,6 @@ body.light-mode .laurels-grid img {
 }
 
 body.light-mode .laurels-grid img:hover {
-    /* Maintain the darkening filters on hover in light mode to prevent fading against white */
+    /* Maintain visibility in light mode during hover. */
     filter: grayscale(100%) brightness(0.4);
 }

@@ -1,6 +1,22 @@
 /**
  * actors.js
- * Contains the data for all cast and crew members.
+ * -----------------------------------------------------------------------------
+ * Centralized data store for all cast and crew biographical information.
+ * 
+ * Purpose:
+ * This object is used to dynamically populate the biographical modals when a user 
+ * clicks on a cast card in the "Cast & Crew" section.
+ * 
+ * Structure:
+ * Each entry is keyed by a unique slug (e.g., 'reza') and contains:
+ * - name: The full name of the person.
+ * - role: Their character name or production title.
+ * - img: File path to their headshot/production photo.
+ * - bio: A detailed biography describing their background and contribution.
+ * 
+ * Maintenance:
+ * To add a new person, add a new key-value pair and ensure the key matches 
+ * the ID passed to `openModal()` in the HTML.
  */
 const actors = {
     'reza': {

@@ -1,6 +1,16 @@
 /**
- * awards.js
- * Centralized data for film awards and recognition.
+ * awardsData
+ * -----------------------------------------------------------------------------
+ * Stores detailed information about the film's awards and festival recognition.
+ * 
+ * Each award entry includes:
+ * - title: The formal name of the award.
+ * - subtitle: The recipient (actor or director).
+ * - festival: The name of the film festival.
+ * - logo: Path to the festival laurel or logo image.
+ * - image: A high-quality photo from the award ceremony or a related still.
+ * - quote: A congratulatory message or official statement.
+ * - imageAlt: Accessibility text for the award image.
  */
 
 const awardsData = {

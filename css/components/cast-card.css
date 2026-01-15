@@ -1,18 +1,32 @@
-/* Cast Card Component */
+/**
+ * Cast Card Component
+ * -----------------------------------------------------------------------------
+ * Displays individual cast and crew members in a responsive grid.
+ */
+
+/* .cast-grid: Uses CSS Grid with auto-fit for automatic responsiveness. */
 .cast-grid {
     display: grid;
+    /* minmax(280px, 1fr) ensures cards stay at a readable size and expand to fill space. */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     padding: 20px 0;
     width: 100%;
 }
 
+/* Fallback for extremely narrow mobile screens to ensure a single-column layout. */
 @media (max-width: 400px) {
     .cast-grid {
         grid-template-columns: 1fr;
     }
 }
 
+/**
+ * .cast-card
+ * -----------------------------------------------------------------------------
+ * The interactive container for each person. Includes transform transitions 
+ * for a premium feel.
+ */
 .cast-card {
     background-color: var(--card-bg);
     border-radius: 4px;
@@ -20,14 +34,17 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     position: relative;
+    /* will-change: Hints the browser to optimize for transform animations. */
     will-change: transform;
 }
 
 .cast-card:hover {
     transform: translateY(-10px);
+    /* Lifts the card on hover */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Restricts the image height to keep the grid balanced. */
 .card-image-wrapper {
     height: 350px;
     overflow: hidden;
@@ -36,15 +53,18 @@
 .card-image-wrapper img {
     width: 100%;
     height: 100%;
+    /* object-fit: cover; ensures images are cropped centrally without distortion. */
     object-fit: cover;
     transition: transform 0.5s ease;
     will-change: transform;
 }
 
+/* Subtle zoom effect on the photo when the card is hovered. */
 .cast-card:hover .card-image-wrapper img {
     transform: scale(1.05);
 }
 
+/* Typography styles for the actor name and role. */
 .card-info {
     padding: 20px;
     text-align: center;

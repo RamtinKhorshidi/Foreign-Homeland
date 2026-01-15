@@ -1,9 +1,16 @@
-/* Premiere Gallery Styles */
+/**
+ * Premiere Gallery Styles
+ * -----------------------------------------------------------------------------
+ * This file handles two distinct components:
+ * 1. The inline slideshow in the "Premiere" section.
+ * 2. The full-screen interactive modal gallery.
+ */
 
-/* Gallery Slideshow (Background) */
+/* --- Gallery Slideshow (Background Animation) --- */
 .gallery {
     position: relative;
     max-width: 100%;
+    /* display: grid used to stack images on top of each other. */
     display: grid;
     grid-template-areas: "slide";
     overflow: hidden;
@@ -17,24 +24,25 @@
     height: auto;
     display: block;
     opacity: 0;
+    /* Cross-fade duration set to 1s for a smooth cinematic transition. */
     transition: opacity 1s ease-in-out;
 }
 
+/* The 'active' class is toggled by carousel.js */
 .gallery img.active {
     opacity: 1;
     z-index: 1;
 }
 
-/* Gallery Controls */
-.gallery-controls {
-    margin-top: 30px;
-    text-align: center;
-}
+/* --- Gallery Modal (Interactive Full-Screen View) --- */
 
-/* Gallery Modal Specifics (Flexbox Centered) */
+/**
+ * .gallery-modal
+ * Uses 'backdrop-filter' for a premium frosted-glass effect over the page.
+ */
 .gallery-modal {
     display: none;
-    /* JS toggles this to flex */
+    /* JS toggles this to 'flex' */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -42,7 +50,6 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.95);
-    /* Darker background */
     backdrop-filter: blur(8px);
     justify-content: center;
     align-items: center;
@@ -61,7 +68,6 @@
     justify-content: center;
 }
 
-/* Main Image View */
 .gallery-main-view {
     display: flex;
     flex-direction: column;
@@ -85,13 +91,17 @@
     width: auto;
     height: auto;
     object-fit: contain;
+    /* Ensures the photo is fully visible without cropping. */
     border: 3px solid var(--primary-color);
     box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
     transition: transform 0.3s ease;
     display: block;
 }
 
-/* Navigation Buttons */
+/**
+ * Gallery Navigation Buttons
+ * Floating circular buttons positioned relative to the image container.
+ */
 .gallery-nav {
     position: absolute;
     top: 50%;
@@ -122,6 +132,7 @@
     transform: translateY(-50%) scale(0.95);
 }
 
+/* Offset positioning for desktop view. */
 .gallery-nav.prev {
     left: -70px;
 }
@@ -130,7 +141,11 @@
     right: -70px;
 }
 
-/* Thumbnails Strip/Bar (Taskbar Style) */
+/**
+ * Thumbnails Strip
+ * -----------------------------------------------------------------------------
+ * A horizontally scrollable list of all gallery images.
+ */
 .gallery-thumbnails {
     display: flex;
     gap: 12px;
@@ -145,7 +160,6 @@
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) transparent;
     justify-content: center;
-    /* Use 'safe center' in modern browsers if needed */
     align-items: center;
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -153,7 +167,7 @@
     flex-shrink: 0;
 }
 
-/* Hide scrollbar for cleaner look but keep scrollable */
+/* Webkit specific scrollbar styling (Chrome/Safari/Edge). */
 .gallery-thumbnails::-webkit-scrollbar {
     height: 4px;
 }
@@ -166,9 +180,7 @@
 .gallery-thumb {
     height: 60px;
     width: 100px;
-    /* Consistent size */
     object-fit: cover;
-    /* Crop to fit */
     border: 2px solid transparent;
     border-radius: 4px;
     cursor: pointer;
@@ -186,7 +198,7 @@
     transform: scale(1.1);
 }
 
-/* Close Button */
+/* Close Button (Large 'X' in top-right corner) */
 .gallery-close {
     position: absolute;
     top: 30px;
@@ -201,8 +213,16 @@
 .gallery-close:hover {
     color: var(--primary-color);
     transform: rotate(90deg);
+    /* Playful interaction hint */
 }
 
+/**
+ * Mobile Responsiveness Overrides
+ * -----------------------------------------------------------------------------
+ * Critical Fix Detail: In earlier versions, navigation buttons were cut off 
+ * on mobile. We now ensure they stay WITHIN the viewport by switching 
+ * from negative relative positioning to positive absolute inset positioning.
+ */
 @media (max-width: 768px) {
     .gallery-main-view {
         height: 50vh;
@@ -220,6 +240,7 @@
         max-width: 90%;
     }
 
+    /* Positioning buttons inside the screen bounds for mobile. */
     .gallery-nav.prev {
         left: 10px;
     }

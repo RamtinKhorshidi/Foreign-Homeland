@@ -1,4 +1,10 @@
-/* Layout and Common Grid/Flex Styles */
+/**
+ * Layout & Common Utility Classes
+ * -----------------------------------------------------------------------------
+ * Provides the structural scaffolding for the page content.
+ */
+
+/* .container: Centers content and provides responsive horizontal padding. */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -8,13 +14,21 @@
     padding-right: 20px;
 }
 
+/* .section: The vertical building blocks of the one-page layout. */
 .section {
     padding: 80px 0;
     width: 100%;
     overflow-x: hidden;
 }
 
-/* Common Heading Style */
+/**
+ * Common Heading Style (H2)
+ * -----------------------------------------------------------------------------
+ * Used for section titles. Designed to look formal and cinematic via the 
+ * 'Cinzel' font and gold primary color.
+ * The 'display: table' combined with 'margin: 0 auto' perfectly centers 
+ * the underlined heading regardless of text length.
+ */
 h2 {
     font-family: var(--font-heading);
     font-size: 2.5rem;
@@ -26,7 +40,7 @@ h2 {
     display: table;
 }
 
-/* Specific section adjustments if needed */
+/* Strategic spacing adjustments for major content sections. */
 .awards-section h2,
 .premiere-section h2,
 .about-section h2 {
