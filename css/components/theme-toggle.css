@@ -10,24 +10,25 @@
     top: 25px;
     left: 25px;
     z-index: 1001;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.35));
 }
 
 #theme-toggle {
     outline: 0;
     background: transparent;
-    border-radius: 0;
     border: 0;
     appearance: none;
     box-shadow: none;
     padding: 0;
     cursor: pointer;
     display: block;
+    border-radius: 999px;
+    /* Ensures the button itself is rounded */
 }
 
 .switch {
     --width: 70px;
-    --height: 32px;
+    --height: 34px;
     --margin: 3px;
     --color-night: #0a0a1a;
     --color-day: #77b5d9;
@@ -43,7 +44,7 @@
     overflow: hidden;
     z-index: 2;
     transition: background-color var(--duration) var(--ease);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .switch::after {
@@ -57,6 +58,8 @@
     transition: opacity var(--duration) var(--ease);
     opacity: 0;
     z-index: 1;
+    border-radius: inherit;
+    /* Ensures background matches pill shape */
 }
 
 /* When active (Dark Mode / is-active class), show the night background */
