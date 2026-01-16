@@ -1,67 +1,183 @@
 /**
  * Theme Toggle Component
  * -----------------------------------------------------------------------------
- * Styles for the fixed circular button that switches the UI between Light and Dark.
+ * Styles for the modern, animated theme toggle button.
+ * Adapted from the day/night celestial design with cinematic refinements.
  */
-.theme-toggle {
+
+.theme-toggle-wrapper {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 25px;
+    left: 25px;
     z-index: 1001;
-    /* High z-index ensures it stays above almost all other UI elements */
-    background: var(--card-bg);
-    border: 1px solid var(--primary-color);
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+#theme-toggle {
+    outline: 0;
+    background: transparent;
+    border-radius: 0;
+    border: 0;
+    appearance: none;
+    box-shadow: none;
+    padding: 0;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-
-    /* Feature: Continuous slow rotation gives the button a "celestial" or
-       mechanical feel, fitting the theme of a film about time and distance. */
-    animation: continuousRotation 20s linear infinite;
-}
-
-@keyframes continuousRotation {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.theme-toggle:hover {
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-    border-color: #fff;
-}
-
-
-/* Toggle Icon Logic:
-   Standard state (Dark Mode) shows the Moon.
-   Light Mode shows the Sun.
-*/
-.theme-toggle .sun-icon {
-    display: none;
-}
-
-.theme-toggle .moon-icon {
     display: block;
 }
 
-body.light-mode .theme-toggle .sun-icon {
-    display: block;
+.switch {
+    --width: 70px;
+    --height: 32px;
+    --margin: 3px;
+    --color-night: #0a0a1a;
+    --color-day: #77b5d9;
+    --color-sun: #d4af37;
+    --ease: cubic-bezier(0.77, 0, 0.175, 1);
+    --duration: 0.6s;
+
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: 999px;
+    background-color: var(--color-day);
+    overflow: hidden;
+    z-index: 2;
+    transition: background-color var(--duration) var(--ease);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-body.light-mode .theme-toggle .moon-icon {
-    display: none;
+.switch::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-night);
+    transition: opacity var(--duration) var(--ease);
+    opacity: 0;
+    z-index: 1;
+}
+
+/* When active (Dark Mode / is-active class), show the night background */
+.switch.is-active::after {
+    opacity: 1;
+}
+
+.switch__inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Default position for Day mode (Globe on the right) */
+    transform: translate3d(calc(var(--width) - var(--height)), 0, 0);
+    transition: transform var(--duration) var(--ease);
+    z-index: 2;
+}
+
+.switch.is-active .switch__inner {
+    transform: translate3d(0, 0, 0);
+}
+
+.switch-globe {
+    --size: calc(var(--height) - (var(--margin) * 2));
+    position: relative;
+    height: var(--size);
+    width: var(--size);
+    margin: var(--margin) 0 0 var(--margin);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff7d6, var(--color-sun));
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    transform: rotate(90deg);
+    transition: transform var(--duration) var(--ease);
+    z-index: 1;
+}
+
+.switch.is-active .switch-globe {
+    transform: rotate(0);
+}
+
+.switch-globe__circle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: var(--color-day);
+    transform: translate3d(50%, 0, 0);
+    transition: transform var(--duration) var(--ease), background-color var(--duration) var(--ease);
+}
+
+.switch.is-active .switch-globe__circle {
+    background-color: var(--color-night);
+    transform: translate3d(-15%, 0, 0);
+}
+
+.switch-globe__moon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    transform: scaleX(-1);
+    opacity: 0;
+    transition: opacity var(--duration) var(--ease);
+}
+
+.switch.is-active .switch-globe__moon {
+    opacity: 1;
+}
+
+.switch__stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: right 10px center;
+    transform: scale(0.3);
+    opacity: 0;
+    transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
+    z-index: 2;
+}
+
+.switch.is-active .switch__stars {
+    transform: scale(0.8);
+    opacity: 1;
+}
+
+.switch__cloud {
+    position: absolute;
+    transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
+    width: auto;
+    bottom: -2px;
+    z-index: 3;
+}
+
+.switch__cloud.--1 {
+    left: 0;
+    height: 65%;
+}
+
+.switch.is-active .switch__cloud.--1 {
+    transform: translate3d(-20px, 10px, 0);
+    opacity: 0;
+}
+
+.switch__cloud.--2 {
+    left: 15px;
+    height: 50%;
+}
+
+.switch.is-active .switch__cloud.--2 {
+    transform: translate3d(-10px, 30px, 0);
+    opacity: 0;
 }
 
 /**
@@ -84,10 +200,13 @@ body.light-mode .cast-card:hover {
 }
 
 @media (max-width: 768px) {
-    .theme-toggle {
-        top: 15px;
-        left: 15px;
-        width: 40px;
-        height: 40px;
+    .theme-toggle-wrapper {
+        top: 20px;
+        left: 20px;
+    }
+
+    .switch {
+        --width: 60px;
+        --height: 28px;
     }
 }

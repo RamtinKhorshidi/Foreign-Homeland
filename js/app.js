@@ -255,16 +255,20 @@ function initTheme() {
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     // Logic for setting the initial theme state:
-    // 1. If 'light' is saved, apply light mode classes.
-    // 2. If 'dark' is saved, ensure light mode classes are removed (defaulting to dark).
-    // 3. if no preference is saved, follow the OS/System preference.
+    // We add 'is-active' to the button for Dark Mode (default).
     if (savedTheme === 'light') {
         document.body.classList.add('light-mode');
+        themeToggle.classList.remove('is-active');
     } else if (savedTheme === 'dark') {
         document.body.classList.remove('light-mode');
+        themeToggle.classList.add('is-active');
     } else if (!systemPrefersDark) {
-        // No saved preference, and system prefers light (since !systemPrefersDark = light)
+        // No saved preference, and system prefers light
         document.body.classList.add('light-mode');
+        themeToggle.classList.remove('is-active');
+    } else {
+        // Default to dark mode (is-active)
+        themeToggle.classList.add('is-active');
     }
 
     // Attach the toggle event to the theme switcher button.
@@ -276,14 +280,20 @@ function initTheme() {
  * Triggered by the user clicking the theme-toggle button.
  */
 function toggleTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+
     // toggle() returns true if the class was added, false if removed.
     const isLightMode = document.body.classList.toggle('light-mode');
+
+    // Update the button's visual state to match.
+    if (themeToggle) {
+        themeToggle.classList.toggle('is-active', !isLightMode);
+    }
 
     // Persist the user's choice to localStorage so it remains consistent on next visit.
     localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
 
     // Apply a temporary transition style to ensure the color change is smooth.
-    // chosen approach: applying via JS to avoid flashing on every page load if it were in CSS.
     document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
 }
 

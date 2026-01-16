@@ -86,10 +86,19 @@
 
 <body>
     <!-- Theme Toggle Fixed Button: Switches between Light and Dark mode -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
-    </button>
+    <div class="theme-toggle-wrapper">
+        <button id="theme-toggle" class="switch" type="button" aria-label="Toggle Theme">
+            <img class="switch__cloud --2" src="https://assets.codepen.io/58281/cloud-1.svg" alt="" />
+            <img class="switch__cloud --1" src="https://assets.codepen.io/58281/cloud-2.svg" alt="" />
+            <div class="switch__inner">
+                <div class="switch-globe">
+                    <img class="switch-globe__moon" src="https://assets.codepen.io/58281/moon_1.png" alt="" />
+                    <div class="switch-globe__circle"></div>
+                </div>
+                <img class="switch__stars" src="https://assets.codepen.io/58281/stars.svg" alt="" />
+            </div>
+        </button>
+    </div>
 
     <!-- HERO Section: The cinematic introduction to the site -->
     <header class="hero">
