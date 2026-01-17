@@ -11,6 +11,8 @@
     padding: 12px 30px;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
+    background: transparent;
+    cursor: pointer;
     text-decoration: none;
     font-family: var(--font-heading);
     font-weight: 700;
