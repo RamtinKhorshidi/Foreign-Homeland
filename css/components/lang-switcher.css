@@ -7,43 +7,49 @@
 
 .lang-switcher-wrapper {
     position: fixed;
-    top: 25px;
-    left: 110px;
-    /* Positioned to the right of the theme toggle */
+    top: 70px;
+    /* Aligned below theme toggle (25px top + 34px height + gap) */
+    left: 25px;
     z-index: 1001;
     display: flex;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    width: 70px;
+    /* Matches theme toggle width exactly */
     background: var(--card-bg);
-    padding: 4px;
+    padding: 2px;
     border-radius: 999px;
-    border: 1px solid var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Matches theme toggle border style */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
-/* Adjust position when in RTL mode */
-[dir="rtl"] .lang-switcher-wrapper {
-    left: auto;
-    right: 110px;
-}
+/* RTL Override REMOVED as per user request for static positioning */
 
 .lang-btn {
     background: transparent;
     border: none;
     color: var(--text-color);
-    padding: 6px 12px;
-    font-size: 0.85rem;
+    padding: 4px 0;
+    width: 50%;
+    /* Equal split */
+    font-size: 0.75rem;
     font-weight: 700;
     cursor: pointer;
     border-radius: 999px;
     transition: all 0.3s ease;
     font-family: var(--font-body);
     text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
 }
 
 .lang-btn.active {
     background: var(--primary-color);
     color: var(--bg-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .lang-btn:hover:not(.active) {
@@ -53,21 +59,23 @@
 /* Specific font for Persian button */
 .lang-btn[data-lang="fa"] {
     font-family: 'Vazirmatn', sans-serif;
+    font-size: 0.7rem;
+    /* Slightly smaller to match visual height of EN */
+    margin-top: 1px;
+    /* Optical optical alignment */
 }
 
 @media (max-width: 768px) {
     .lang-switcher-wrapper {
-        top: 20px;
-        left: 100px;
-    }
-
-    [dir="rtl"] .lang-switcher-wrapper {
-        left: auto;
-        right: 100px;
+        top: 60px;
+        /* Mobile alignment (20px top + 28px height + gap) */
+        left: 20px;
+        width: 60px;
+        /* Matches mobile theme toggle width */
+        padding: 2px;
     }
 
     .lang-btn {
-        padding: 4px 10px;
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
 }
