@@ -22,6 +22,7 @@
     /* Subtle lift from background */
     --font-heading: 'Cinzel', serif;
     --font-body: 'Lato', sans-serif;
+    --font-persian: 'Vazirmatn', sans-serif;
 }
 
 /**
@@ -50,6 +51,25 @@ body.light-mode {
     /* Ensures padding/borders don't affect element width */
 }
 
+/* RTL Support & Persian Typography */
+[dir="rtl"] {
+    font-family: var(--font-persian);
+    text-align: right;
+}
+
+[dir="rtl"] .film-title,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] .cta-button {
+    font-family: var(--font-persian);
+    /* Headings in Persian use Vazirmatn for better legibility */
+    letter-spacing: 0;
+    /* Letter spacing usually looks bad on Persian fonts */
+}
+
+/* Base body styles */
 html,
 body {
     background-color: var(--bg-color);
@@ -59,6 +79,10 @@ body {
     overflow-x: hidden;
     /* Critical for mobile to prevent unwanted horizontal scrolling */
     width: 100%;
+}
+
+[dir="rtl"] body {
+    font-family: var(--font-persian);
 }
 
 img {

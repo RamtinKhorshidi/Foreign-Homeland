@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', function () {
     initTitleAnimation();
     initButtonAnimation();
 
+    // 6. Internationalization (Language Switcher)
+    initI18n();
+
+
     /**
      * GLobal Exposure
      * -------------------------------------------------------------------------
@@ -38,4 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
     window.openGalleryModal = openGalleryModal;
     window.closeGalleryModal = closeGalleryModal;
     window.changeGalleryImage = changeGalleryImage;
+
+    // Internationalization Helpers
+    window.getCurrentLang = getCurrentLang;
+    window.getTranslatedContent = getTranslatedContent;
 });
+

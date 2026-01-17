@@ -1,0 +1,73 @@
+/**
+ * Language Switcher Component
+ * -----------------------------------------------------------------------------
+ * Styles for the language toggle button (EN/FA).
+ * Positioned next to the theme toggle for consistent access.
+ */
+
+.lang-switcher-wrapper {
+    position: fixed;
+    top: 25px;
+    left: 110px;
+    /* Positioned to the right of the theme toggle */
+    z-index: 1001;
+    display: flex;
+    gap: 8px;
+    background: var(--card-bg);
+    padding: 4px;
+    border-radius: 999px;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Adjust position when in RTL mode */
+[dir="rtl"] .lang-switcher-wrapper {
+    left: auto;
+    right: 110px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.lang-btn:hover:not(.active) {
+    background: rgba(212, 175, 55, 0.2);
+}
+
+/* Specific font for Persian button */
+.lang-btn[data-lang="fa"] {
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .lang-switcher-wrapper {
+        top: 20px;
+        left: 100px;
+    }
+
+    [dir="rtl"] .lang-switcher-wrapper {
+        left: auto;
+        right: 100px;
+    }
+
+    .lang-btn {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+}

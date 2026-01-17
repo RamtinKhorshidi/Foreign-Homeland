@@ -13,6 +13,7 @@
 @import 'components/modals.css?v=2.0';
 @import 'components/gallery.css?v=2.0';
 @import 'components/theme-toggle.css?v=2.0';
+@import 'components/lang-switcher.css?v=2.0';
 
 /* 4. Sections */
 @import 'sections/about.css?v=2.0';

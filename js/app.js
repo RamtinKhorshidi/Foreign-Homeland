@@ -1,4 +1,170 @@
 ﻿
+// --- Source: js/data/translations.js ---
+
+const translations = {
+    en: {
+        'nav_story': 'The Story',
+        'nav_awards': 'Awards & Selections',
+        'nav_cast': 'Cast & Crew',
+        'nav_premiere': 'World Red Carpet Premiere',
+        'nav_links': 'Related Links',
+        'hero_title': 'FOREIGN HOMELAND',
+        'hero_tagline': 'Discovering the true meaning of home in a foreign land.',
+        'btn_meet_cast': 'Meet the Cast',
+        'btn_watch_trailer': 'Watch the Trailer',
+        'about_title': 'The Story',
+        'about_text': 'After fleeing Iran, a father and his 3 children struggle to adapt to their new life in Canada in the first three weeks, facing cultural clashes, language barriers and family tensions.',
+        'awards_title': 'Awards & Selections',
+        'btn_award_canadian': 'View Best Canadian Feature Award Details',
+        'btn_award_actor': 'View Best Actor Award Details',
+        'cast_title': 'Cast & Crew',
+        'btn_more': 'More',
+        'premiere_title': 'World Red Carpet Premiere',
+        'premiere_date': 'November 2, 2025 | Bella Concert Hall, Calgary',
+        'premiere_desc': "We are thrilled to announce that FOREIGN HOMELAND will make its World Red Carpet Premiere at Bella Concert Hall. This marks the first-ever Iranian red-carpet movie premiere in Calgary, a milestone not just for our team, but also for the Persian community and Alberta's growing independent film scene.",
+        'btn_view_gallery': 'View Gallery',
+        'links_title': 'Related Links',
+        'footer_copy': '&copy; 2025 Armin Productions. All Rights Reserved.',
+        'btn_follow_instagram': 'Follow on Instagram'
+    },
+    fa: {
+        'nav_story': 'داستان فیلم',
+        'nav_awards': 'جوایز و افتخارات',
+        'nav_cast': 'بازیگران و عوامل',
+        'nav_premiere': 'اکران رسمی',
+        'nav_links': 'پیوندهای مرتبط',
+        'hero_title': 'دیار غربت',
+        'hero_tagline': 'کشف معنای واقعی خانه در سرزمینی بیگانه.',
+        'btn_meet_cast': 'آشنایی با بازیگران',
+        'btn_watch_trailer': 'تماشای تریلر',
+        'about_title': 'داستان فیلم',
+        'about_text': 'پس از فرار از ایران، پدری به همراه سه فرزندش در سه هفته اول زندگی در کانادا، با برخوردهای فرهنگی، موانع زبانی و تنش‌های خانوادگی برای سازگاری با زندگی جدیدشان دست و پنجه نرم می‌کنند.',
+        'awards_title': 'جوایز و حضور در جشنواره‌ها',
+        'btn_award_canadian': 'مشاهده جزئیات جایزه بهترین فیلم داستانی کانادایی',
+        'btn_award_actor': 'مشاهده جزئیات جایزه بهترین بازیگر مرد',
+        'cast_title': 'بازیگران و عوامل',
+        'btn_more': 'بیشتر',
+        'premiere_title': 'مراسم فرش قرمز اکران جهانی',
+        'premiere_date': '۱۲ آبان ۱۴۰۴ | تالار کنسرت بلا، کلگری',
+        'premiere_desc': 'با خوشحالی اعلام می‌کنیم که فیلم «دیار غربت» اکران جهانی خود را در تالار کنسرت بلا جشن خواهد گرفت. این اولین مراسم فرش قرمز یک فیلم ایرانی در کلگری است؛ رویدادی مهم نه تنها برای تیم ما، بلکه برای جامعه ایرانیان و صنعت فیلم‌سازی مستقل آلبرتا.',
+        'btn_view_gallery': 'مشاهده گالری تصاویر',
+        'links_title': 'پیوندهای مرتبط',
+        'footer_copy': '&copy; ۲۰۲۵ آرمین پروداکشنز. تمامی حقوق محفوظ است.',
+        'btn_follow_instagram': 'ما را در اینستاگرام دنبال کنید'
+    }
+};
+
+const dataTranslations = {
+    fa: {
+        actors: {
+            'reza': {
+                name: 'رامتین خورشیدی',
+                role: 'رضا',
+                bio: "رامتین خورشیدی در نقش رضا، برادر بزرگتر، در فیلم «دیار غربت» ایفای نقش می‌کند؛ نقشی که جایزه بهترین بازیگر مرد را در جشنواره بین‌المللی فیلم جوانان ونکوور برای او به ارمغان آورد. او یک رپر و صداپیشه ۲۲ ساله ساکن کلگری است که به خاطر اجراهای پرانرژی و حضور رو به رشدش در جامعه ایرانی این شهر شناخته می‌شود. رامتین سابقه اجرا برای جمعیتی بالغ بر ۲۰۰ تا ۳۰۰ نفر را دارد و اکنون در حال گسترش فعالیت‌های خود به حوزه بازیگری است. «دیار غربت» اولین پروژه سینمایی کانادایی او با تیم «آرمین پروداکشنز» محسوب می‌شود. او هنرمندی خلاق است که ملودی‌های رپ، پاپ و سنتی ایرانی را برای خلق سبک منحصر به فرد خود ترکیب می‌کند. او به زبان‌های فارسی و اسپانیایی مسلط است و موسیقی‌های خود را به هر دو زبان می‌نویسد و تولید می‌کند."
+            },
+            'jamshid': {
+                name: 'مصطفی پورعلمداری',
+                role: 'جمشید',
+                bio: 'مصطفی در فیلم «دیار غربت» نقش جمشید، پدر خانواده را ایفا می‌کند که اولین حضور او در یک فیلم بلند سینمایی است. مصطفی بازیگر و مهندس ساکن کلگری است که از کودکی شیفته تئاتر و سینما بوده است. او در کنار اخذ دو مدرک کارشناسی ارشد و ساختن مسیری در مهندسی، در تئاتر فعالیت داشته، در فیلم کوتاه «طعم قهوه برزیلی» ظاهر شده و پروژه‌های مختلفی را روایت کرده است. او از زمان مهاجرت به کانادا در سال ۲۰۱۱، در اوقات فراغت خود به خلق آثار هنری و اجرا ادامه داده است.'
+            },
+            'ahmad': {
+                name: 'آرش منهاس',
+                role: 'احمد',
+                bio: 'آرش در فیلم «دیار غربت» نقش احمد، کوچک‌ترین برادر را ایفا می‌کند. او هنرمندی بین‌رشته‌ای با اصالت هندی-ایرانی و ساکن کلگری است که در زمینه‌های تئاتر، رقص و داستان‌سرایی حرکتی فعالیت می‌کند. آرش هم‌اکنون در حال اتمام مدرک کارشناسی ارشد در رشته خلق و پژوهش بین‌رشته‌ای در دانشگاه کلگری است و بر موضوعاتی چون هویت در میان نسل اول مهاجران هندی-ایرانی تمرکز دارد. او با بیش از ۱۵ سال تجربه به عنوان نمایشنامه‌نویس، بازیگر، رقصنده و شاعر فعالیت کرده است.'
+            },
+            'jim': { name: 'ریک کوی', role: 'جیم', bio: '' },
+            'sara': {
+                name: 'زهرا معصومی',
+                role: 'سارا',
+                bio: 'زهرا معصومی در نقش سارا، خواهر خانواده، در فیلم «دیار غربت» بازی می‌کند. او بیش از شش سال سابقه بازیگری دارد و مشتاق است به شخصیت‌ها جان ببخشد و با مخاطبان ارتباط برقرار کند. بازیگری به او اجازه می‌دهد تا در داستان‌های مختلف قدم بگذارد و انسانیت را از طریق اجرا کشف کند. آثار او هم در تئاتر و هم در سینما دیده شده است. او روی صحنه تئاتر در آثاری چون «هنر»، «خاموشی»، «غیاب»، «سیزده»، «بوته آزمایش» و «دیگه بهم زنگ نزن مامان!» ظاهر شده است.'
+            },
+            'soheila': {
+                name: 'صفورا نقوی',
+                role: 'سهیلا',
+                bio: 'صفورا نقوی در نقش سهیلا (عمه) در فیلم «دیار غربت» ظاهر شد. او بازیگری با تجربه و صداپیشه‌ای است که سابقه درخشانی در تئاتر و سینما دارد. پس از نقل مکان به کانادا، او به بازیگری در تئاتر و فیلم ادامه داد و فعالیت‌های خود را از طریق همکاری‌های جدید گسترش داد. صفورا همچنین تجربه گسترده‌ای در زمینه دوبله و گویندگی دارد و در تولیدات بسیاری در ایران و کانادا مشارکت داشته است. او به زبان‌های فارسی و انگلیسی مسلط است و به داستان‌سرایی چندفرهنگی علاقه دارد.'
+            },
+            'susan': { name: 'الکساندرا اسکات', role: 'سوزان پایک', bio: '' },
+            'cameron': { name: 'کامرون راس', role: 'مشتری ۲', bio: '' },
+            'redi': { name: 'ردی زیکا', role: 'مشتری ۱', bio: '' },
+            'armin': {
+                name: 'آرمین زرین‌قلم',
+                role: 'تهیه‌کننده، کارگردان و نویسنده',
+                bio: 'آرمین زرین‌قلم فیلمساز ۲۳ ساله ایرانی-کانادایی و برنده جوایز متعدد از کلگری، آلبرتا است. او مدرک کارشناسی بازرگانی خود را در رشته بازاریابی از دانشکده بازرگانی هاسکاین دریافت کرد و در ۱۷ سالگی به علاقه خود یعنی فیلمسازی پی برد. او به عنوان مؤسس «آرمین پروداکشنز»، چندین پروژه را کارگردانی و تهیه کرده و تیم‌های خلاق را هدایت کرده است. او همچنین بودجه اولین فیلم بلند خود، «دیار غربت» را تأمین کرد که در آن به عنوان تهیه‌کننده اجرایی، کارگردان و نویسنده فعالیت داشت.'
+            },
+            'sepidar': {
+                name: 'سپیدار',
+                role: 'مدیر فیلمبرداری',
+                bio: 'سپیدار، مدیر فیلمبرداری و تدوینگر برنده جایزه ما در فیلم «دیار غربت» است. او با سال‌ها تجربه، انتخاب قطعی تهیه‌کنندگان برای این پروژه بود. فیلمبرداری او احساسات را به زندگی پیوند می‌زند و تأثیر عمیقی بر هر بیننده‌ای می‌گذارد. سپیدار که مشتاق سینما و بازنمایی زنان در این عرصه است، سبک منحصر به فرد خود را در هر پلان به نمایش می‌گذارد. تدوین و دقت او در جزئیات به شکل‌گیری نسخه نهایی فیلم کمک شایانی کرد.'
+            },
+            'romin': { name: 'رومین', role: 'تهیه‌کننده', bio: '' }
+        },
+        awards: {
+            'best-canadian-feature': {
+                title: "جایزه بهترین فیلم داستانی کانادایی",
+                festival: "جشنواره بین‌المللی فیلم جوانان ونکوور",
+                quote: "تبریک به آرمین زرین‌قلم برای کسب جایزه بهترین فیلم داستانی کانادایی در جشنواره بین‌المللی فیلم جوانان ونکوور!"
+            },
+            'best-actor': {
+                title: "جایزه بهترین بازیگر مرد",
+                festival: "جشنواره بین‌المللی فیلم جوانان ونکوور",
+                quote: "تبریک به رامتین خورشیدی برای کسب جایزه بهترین بازیگر مرد در جشنواره بین‌المللی فیلم جوانان ونکوور به خاطر بازی فراموش‌نشدنی‌اش در فیلم «دیار غربت»!"
+            }
+        }
+    }
+};
+
+// --- Source: js/modules/i18n.js ---
+
+let currentLang = 'en';
+
+function initI18n() {
+    const savedLang = localStorage.getItem('language');
+    if (savedLang === 'fa') setLanguage('fa');
+    else setLanguage('en');
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.onclick = () => setLanguage(btn.getAttribute('data-lang'));
+    });
+}
+
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('language', lang);
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            if (key === 'footer_copy') el.innerHTML = translations[lang][key];
+            else el.textContent = translations[lang][key];
+        }
+    });
+
+    if (translations[lang]) {
+        if (translations[lang]['doc_title']) document.title = translations[lang]['doc_title'];
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc && translations[lang]['doc_desc']) {
+            metaDesc.setAttribute('content', translations[lang]['doc_desc']);
+        }
+    }
+
+    if (typeof initTitleAnimation === 'function') initTitleAnimation();
+}
+
+function getCurrentLang() { return currentLang; }
+
+function getTranslatedContent(type, key) {
+    if (currentLang === 'fa' && dataTranslations.fa[type] && dataTranslations.fa[type][key]) {
+        return dataTranslations.fa[type][key];
+    }
+    return null;
+}
+
 // --- Source: js/data/actors.js ---
 
 /**
@@ -418,9 +584,12 @@ function openModal(actorKey) {
     if (actor) {
         // Update basic text and image content.
         modalImg.src = actor.img;
-        modalName.textContent = actor.name;
-        modalRole.textContent = actor.role;
-        modalBio.textContent = actor.bio;
+
+        // Internationalization Support
+        const translated = getTranslatedContent('actors', actorKey);
+        modalName.textContent = translated ? translated.name : actor.name;
+        modalRole.textContent = translated ? translated.role : actor.role;
+        modalBio.textContent = translated ? translated.bio : actor.bio;
 
         // Cleanup: Remove existing social button from a previous modal opening.
         const existingBtn = modalText.querySelector('.modal-social-btn');
@@ -441,7 +610,7 @@ function openModal(actorKey) {
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
-                <span>Follow on Instagram</span>
+                <span>${currentLang === 'fa' ? translations.fa.btn_follow_instagram : 'Follow on Instagram'}</span>
             `;
             modalText.appendChild(socialBtn);
         }
@@ -480,13 +649,16 @@ function openAwardModal(awardKey) {
 
     const data = awardsData[awardKey];
     if (data) {
+        // Internationalization Support
+        const translated = getTranslatedContent('awards', awardKey);
+
         awardImg.src = data.image;
         awardImg.alt = data.imageAlt;
         awardLogo.src = data.logo;
-        awardTitle.textContent = data.title;
-        awardSubtitle.textContent = data.subtitle;
-        awardFestival.textContent = data.festival;
-        awardQuote.innerHTML = `"${data.quote}"`;
+        awardTitle.textContent = translated ? translated.title : data.title;
+        awardSubtitle.textContent = translated ? translated.subtitle : data.subtitle;
+        awardFestival.textContent = translated ? translated.festival : data.festival;
+        awardQuote.innerHTML = translated ? `"${translated.quote}"` : `"${data.quote}"`;
 
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
@@ -766,6 +938,9 @@ document.addEventListener('DOMContentLoaded', function () {
     initTitleAnimation();
     initButtonAnimation();
 
+    // 6. Internationalization: Language support (Persian/English)
+    initI18n();
+
     /**
      * Interface Exposure:
      * We attach key functional triggers to the global 'window' object.
@@ -781,5 +956,10 @@ document.addEventListener('DOMContentLoaded', function () {
     window.openGalleryModal = openGalleryModal;
     window.closeGalleryModal = closeGalleryModal;
     window.changeGalleryImage = changeGalleryImage;
+
+    // Translation Helpers
+    window.setLanguage = setLanguage;
+    window.getCurrentLang = getCurrentLang;
+    window.getTranslatedContent = getTranslatedContent;
 });
 

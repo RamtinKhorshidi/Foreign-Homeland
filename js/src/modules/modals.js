@@ -26,11 +26,14 @@ function openModal(actorKey) {
 
     const actor = actors[actorKey];
     if (actor) {
-        // Update basic text and image content.
+        // Feature: Internationalization Support
+        // Check if translated content exists for Persian
+        const translated = typeof getTranslatedContent === 'function' ? getTranslatedContent('actors', actorKey) : null;
+
         modalImg.src = actor.img;
-        modalName.textContent = actor.name;
-        modalRole.textContent = actor.role;
-        modalBio.textContent = actor.bio;
+        modalName.textContent = translated ? translated.name : actor.name;
+        modalRole.textContent = translated ? translated.role : actor.role;
+        modalBio.textContent = translated ? translated.bio : actor.bio;
 
         // Cleanup: Remove existing social button from a previous modal opening.
         const existingBtn = modalText.querySelector('.modal-social-btn');
@@ -51,7 +54,7 @@ function openModal(actorKey) {
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
-                <span>Follow on Instagram</span>
+                <span>${typeof getCurrentLang === 'function' && getCurrentLang() === 'fa' ? translations.fa.btn_follow_instagram : 'Follow on Instagram'}</span>
             `;
             modalText.appendChild(socialBtn);
         }
@@ -90,13 +93,16 @@ function openAwardModal(awardKey) {
 
     const data = awardsData[awardKey];
     if (data) {
+        // Feature: Internationalization Support
+        const translated = typeof getTranslatedContent === 'function' ? getTranslatedContent('awards', awardKey) : null;
+
         awardImg.src = data.image;
         awardImg.alt = data.imageAlt;
         awardLogo.src = data.logo;
-        awardTitle.textContent = data.title;
-        awardSubtitle.textContent = data.subtitle;
-        awardFestival.textContent = data.festival;
-        awardQuote.innerHTML = `"${data.quote}"`;
+        awardTitle.textContent = translated ? translated.title : data.title;
+        awardSubtitle.textContent = translated ? translated.subtitle : data.subtitle;
+        awardFestival.textContent = translated ? translated.festival : data.festival;
+        awardQuote.innerHTML = translated ? `"${translated.quote}"` : `"${data.quote}"`;
 
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';

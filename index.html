@@ -73,7 +73,8 @@
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&family=Vazirmatn:wght@100..900&display=swap"
         rel="stylesheet">
 
     <!-- Performance Optimization: Preload hero posters for faster LCP (Largest Contentful Paint) -->
@@ -100,21 +101,27 @@
         </button>
     </div>
 
+    <!-- Language Switcher Fixed Button: Switches between English and Persian -->
+    <div class="lang-switcher-wrapper">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fa">FA</button>
+    </div>
+
     <!-- HERO Section: The cinematic introduction to the site -->
     <header class="hero">
         <div class="hero-content">
-            <h1 class="film-title">FOREIGN HOMELAND</h1>
-            <p class="tagline">Discovering the true meaning of home in a foreign land.</p>
+            <h1 class="film-title" data-i18n="hero_title">FOREIGN HOMELAND</h1>
+            <p class="tagline" data-i18n="hero_tagline">Discovering the true meaning of home in a foreign land.</p>
             <!-- Call to Action: Cinematic buttons with custom reveal animation -->
             <div class="hero-btns">
                 <a href="#cast" class="cta-button btn-animated">
                     <span class="text-container">
-                        <span class="text">Meet the Cast</span>
+                        <span class="text" data-i18n="btn_meet_cast">Meet the Cast</span>
                     </span>
                 </a>
                 <a href="https://www.youtube.com/watch?v=gXre6qjlM18" target="_blank" class="cta-button btn-animated">
                     <span class="text-container">
-                        <span class="text">Watch the Trailer</span>
+                        <span class="text" data-i18n="btn_watch_trailer">Watch the Trailer</span>
                     </span>
                 </a>
             </div>
@@ -124,8 +131,9 @@
     <!-- SUMMARY Section: Overview of the film's premise -->
     <section id="about" class="section about-section">
         <div class="container">
-            <h2>The Story</h2>
-            <p>After fleeing Iran, a father and his 3 children struggle to adapt to their new life in Canada in the
+            <h2 data-i18n="about_title">The Story</h2>
+            <p data-i18n="about_text">After fleeing Iran, a father and his 3 children struggle to adapt to their new
+                life in Canada in the
                 first three weeks, facing cultural clashes, language barriers and family tensions.</p>
         </div>
     </section>
@@ -133,15 +141,17 @@
     <!-- AWARDS Section: Festival recognition and laurels -->
     <section id="awards" class="section awards-section">
         <div class="container">
-            <h2>Awards & Selections</h2>
+            <h2 data-i18n="awards_title">Awards & Selections</h2>
 
             <!-- Interactive Award Detail Triggers -->
             <div class="awards-trigger-container">
                 <div class="award-buttons">
-                    <button onclick="openAwardModal('best-canadian-feature')" class="cta-button award-btn">View Best
+                    <button onclick="openAwardModal('best-canadian-feature')" class="cta-button award-btn"
+                        data-i18n="btn_award_canadian">View Best
                         Canadian
                         Feature Award Details</button>
-                    <button onclick="openAwardModal('best-actor')" class="cta-button award-btn">View Best Actor Award
+                    <button onclick="openAwardModal('best-actor')" class="cta-button award-btn"
+                        data-i18n="btn_award_actor">View Best Actor Award
                         Details</button>
                 </div>
 
@@ -183,7 +193,7 @@
     <!-- CAST & CREW Section: Grid of key production members -->
     <section id="cast" class="section cast-section">
         <div class="container">
-            <h2>Cast & Crew</h2>
+            <h2 data-i18n="cast_title">Cast & Crew</h2>
             <div class="cast-grid">
                 <!-- Each cast card triggers a biometric modal via app.js -->
                 <div class="cast-card" onclick="openModal('sara')">
@@ -195,7 +205,7 @@
                     <div class="card-info">
                         <h3>Zahra Masoumi</h3>
                         <p class="role">Sara</p>
-                        <button class="more-btn">More</button>
+                        <button class="more-btn" data-i18n="btn_more">More</button>
                     </div>
                 </div>
 
@@ -313,7 +323,7 @@
                     <div class="card-info">
                         <h3>Armin Zarringhalam</h3>
                         <p class="role">PRODUCER, Director & Writer</p>
-                        <button class="more-btn">More</button>
+                        <button class="more-btn" data-i18n="btn_more">More</button>
                     </div>
                 </div>
 
@@ -326,7 +336,7 @@
                     <div class="card-info">
                         <h3>Sepidar</h3>
                         <p class="role">Director of Photography</p>
-                        <button class="more-btn">More</button>
+                        <button class="more-btn" data-i18n="btn_more">More</button>
                     </div>
                 </div>
 
@@ -339,7 +349,7 @@
                     <div class="card-info">
                         <h3>Romin</h3>
                         <p class="role">PRODUCER</p>
-                        <button class="more-btn">More</button>
+                        <button class="more-btn" data-i18n="btn_more">More</button>
                     </div>
                 </div>
             </div>
@@ -349,9 +359,9 @@
     <!-- PREMIERE Section: Media coverage and high-resolution gallery of the Calgary premiere -->
     <section id="premiere" class="section premiere-section">
         <div class="container">
-            <h2>World Red Carpet Premiere</h2>
-            <p class="premiere-date">November 2, 2025 | Bella Concert Hall, Calgary</p>
-            <p class="premiere-desc">
+            <h2 data-i18n="premiere_title">World Red Carpet Premiere</h2>
+            <p class="premiere-date" data-i18n="premiere_date">November 2, 2025 | Bella Concert Hall, Calgary</p>
+            <p class="premiere-desc" data-i18n="premiere_desc">
                 We are thrilled to announce that FOREIGN HOMELAND will make its World Red Carpet Premiere at Bella
                 Concert Hall.
                 This marks the first-ever Iranian red-carpet movie premiere in Calgary, a milestone not just for our
@@ -382,7 +392,8 @@
 
             <!-- Full Gallery View Trigger -->
             <div class="gallery-controls">
-                <button onclick="openGalleryModal()" class="cta-button gallery-btn">View Gallery</button>
+                <button onclick="openGalleryModal()" class="cta-button gallery-btn" data-i18n="btn_view_gallery">View
+                    Gallery</button>
             </div>
         </div>
     </section>
@@ -390,7 +401,7 @@
     <!-- RELATED LINKS Section: Social presence and IMDB listings -->
     <section id="related" class="section related-section">
         <div class="container">
-            <h2>Related Links</h2>
+            <h2 data-i18n="nav_links">Related Links</h2>
             <div class="social-icons">
                 <a href="https://www.instagram.com/foreign_homeland?igsh=bjkzOWM3bTExYno3" target="_blank"
                     aria-label="Instagram" class="social-link">
@@ -416,7 +427,7 @@
 
     <!-- FOOTER: Standard copyright and credits -->
     <footer>
-        <p>&copy; 2025 Armin Productions. All Rights Reserved.</p>
+        <p data-i18n="footer_copy">&copy; 2025 Armin Productions. All Rights Reserved.</p>
     </footer>
 
     <!-- MODAL OVERLAYS: These elements are hidden by default and populated via JavaScript (app.js) -->
