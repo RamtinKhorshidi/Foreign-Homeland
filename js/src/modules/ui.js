@@ -19,9 +19,36 @@ function initTitleAnimation() {
     if (!title) return;
 
     const originalText = title.textContent.trim();
-    const words = originalText.split(' ');
+    const isRTL = document.documentElement.dir === 'rtl';
+
     title.innerHTML = ''; // Reset for injection.
 
+    // For Persian/RTL, we avoid splitting into characters to maintain script connectivity.
+    // Instead, we treat each word as the "animatable" unit.
+    if (isRTL) {
+        const words = originalText.split(' ');
+        words.forEach((word, wordIndex) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'word char-animate'; // Entire word gets the glow/scale effect
+            wordSpan.textContent = word;
+
+            // Apply a staggered reveal delay to the word
+            wordSpan.style.animationDelay = `${wordIndex * 0.3}s`;
+
+            title.appendChild(wordSpan);
+
+            if (wordIndex < words.length - 1) {
+                const spacer = document.createElement('span');
+                spacer.className = 'spacer';
+                spacer.innerHTML = '&nbsp;';
+                title.appendChild(spacer);
+            }
+        });
+        return;
+    }
+
+    // Default LTR logic: Split into characters for the "shimmer" or "staggered" reveal.
+    const words = originalText.split(' ');
     words.forEach((word, wordIndex) => {
         const wordSpan = document.createElement('span');
         wordSpan.className = 'word';

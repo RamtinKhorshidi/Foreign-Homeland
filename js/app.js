@@ -854,17 +854,37 @@ function initTitleAnimation() {
     if (!title) return;
 
     const text = title.textContent.trim();
+    const isRTL = document.documentElement.dir === 'rtl';
+
     // Clear the original text to inject our animated span structure.
     title.innerHTML = '';
 
-    // Split text into words to maintain proper spacing during staggered animation.
-    const words = text.split(' ');
+    // For RTL/Persian, we keep words whole to avoid breaking letter connectivity.
+    if (isRTL) {
+        const words = text.split(' ');
+        words.forEach((word, index) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'word char-animate'; // The whole word handles the hover effect
+            wordSpan.textContent = word;
+            wordSpan.style.animationDelay = `${index * 0.3}s`;
+            title.appendChild(wordSpan);
 
+            if (index < words.length - 1) {
+                const spacer = document.createElement('span');
+                spacer.innerHTML = '&nbsp;';
+                spacer.className = 'spacer';
+                title.appendChild(spacer);
+            }
+        });
+        return;
+    }
+
+    // Default LTR logic: Split into individual characters for staggered animation.
+    const words = text.split(' ');
     words.forEach((word, index) => {
         const wordSpan = document.createElement('span');
         wordSpan.className = 'word';
 
-        // Split word into characters to apply individual animation delays via CSS.
         word.split('').forEach(char => {
             const charSpan = document.createElement('span');
             charSpan.textContent = char;
@@ -874,7 +894,6 @@ function initTitleAnimation() {
 
         title.appendChild(wordSpan);
 
-        // Maintain readability: Add spacer between words, but not after the absolute last word.
         if (index < words.length - 1) {
             const spacer = document.createElement('span');
             spacer.innerHTML = '&nbsp;';
