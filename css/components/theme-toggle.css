@@ -24,6 +24,8 @@
     display: block;
     border-radius: 999px;
     /* Ensures the button itself is rounded */
+    direction: ltr;
+    /* Forces the animation to behave identical to English regardless of site language */
 }
 
 .switch {
