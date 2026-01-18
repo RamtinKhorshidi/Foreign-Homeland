@@ -118,12 +118,28 @@ const dataTranslations = {
 let currentLang = 'en';
 
 function initI18n() {
-    const savedLang = localStorage.getItem('language');
-    if (savedLang === 'fa') setLanguage('fa');
-    else setLanguage('en');
+    // Check URL parameters first for language override
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+
+    if (langParam && (langParam === 'fa' || langParam === 'en')) {
+        setLanguage(langParam);
+    } else {
+        const savedLang = localStorage.getItem('language');
+        if (savedLang === 'fa') setLanguage('fa');
+        else setLanguage('en');
+    }
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.onclick = () => setLanguage(btn.getAttribute('data-lang'));
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            setLanguage(lang);
+
+            // Optionally update URL without reload to reflect choice (for sharing)
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.set('lang', lang);
+            window.history.pushState({}, '', newUrl);
+        });
     });
 }
 

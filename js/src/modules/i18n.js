@@ -11,11 +11,19 @@ let currentLang = 'en';
  * Initializes the language based on localStorage or default.
  */
 function initI18n() {
-    const savedLang = localStorage.getItem('language');
-    if (savedLang === 'fa') {
-        setLanguage('fa');
+    // Check URL parameters first for language override
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+
+    if (langParam && (langParam === 'fa' || langParam === 'en')) {
+        setLanguage(langParam);
     } else {
-        setLanguage('en');
+        const savedLang = localStorage.getItem('language');
+        if (savedLang === 'fa') {
+            setLanguage('fa');
+        } else {
+            setLanguage('en');
+        }
     }
 
     // Attach event listeners to language buttons
@@ -24,6 +32,11 @@ function initI18n() {
         btn.addEventListener('click', () => {
             const lang = btn.getAttribute('data-lang');
             setLanguage(lang);
+
+            // Optionally update URL without reload to reflect choice (for sharing)
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.set('lang', lang);
+            window.history.pushState({}, '', newUrl);
         });
     });
 }
