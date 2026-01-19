@@ -136,24 +136,37 @@
 .modal-social-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    padding: 10px 20px;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 8px 16px;
     background-color: transparent;
     border: 1px solid var(--primary-color);
+    border-radius: 2px;
     color: var(--primary-color);
     text-decoration: none;
     font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-weight: 500;
+    font-size: 0.8rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.modal-social-btn svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
 }
 
 .modal-social-btn:hover {
     background-color: var(--primary-color);
     color: var(--bg-color);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.modal-social-btn:hover svg {
+    transform: scale(1.1);
 }
 
 /**
