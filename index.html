@@ -76,15 +76,19 @@
     }
     </script>
 
-    <!-- Project Stylesheet: v=2.1 used for cache busting during deployments -->
-    <link rel="stylesheet" href="css/main.css?v=2.1">
+    <!-- Project Stylesheet: Bundled for performance -->
+    <link rel="stylesheet" href="css/app.min.css?v=2.2">
 
     <!-- Progressive Web App & Fonts -->
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Optimized Font Loading: Reduced weights for Vazirmatn (400, 700, 900 only) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&family=Vazirmatn:wght@100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&family=Vazirmatn:wght@400;700;900&display=swap"
         rel="stylesheet">
 
     <!-- Performance Optimization: Preload hero posters for faster LCP (Largest Contentful Paint) -->
