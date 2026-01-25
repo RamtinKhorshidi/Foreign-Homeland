@@ -47,7 +47,7 @@ const actors = {
         name: 'Zahra Masoumi',
         role: 'Sara',
         img: 'images/Actor Photos/Sara.jpg/DSC00188-min.jpg',
-        bio: "Zahra Masoumi plays Sara, the sister, in Foreign Homeland. She has over six years of acting experience and is passionate about bringing characters to life and connecting with audiences. Acting allows her to step into different stories and explore humanity through performance. Her work spans both theatre and film. On stage, she has appeared in productions such as The Art, Lights Out, Absence, The Thirteen, The Crucible, and Don't Call Me Anymore, Mother! On screen, she starred as the lead role of Sara in Foreign Homeland, directed by Armin Zarringhalam."
+        bio: "Zahra Masoumi plays Sara, the sister, in Foreign Homeland. She has over six years of acting experience and is passionate about bringing characters to life and connecting with audiences. Acting allows her to step into different stories and explore humanity through performance. Her work spans both theatre and film. On stage, she has appeared in productions such as The Art, Lights Out, Antigone, and The Crucible! \nOn screen, she starred as the lead role of Sara in Foreign Homeland, lead role of Elham in two birds, both directed by Armin Zarringhalam. Bahareh role in the Empty Heaven directed by Abdolreza Kahani."
     },
     'soheila': {
         name: 'Safura Naghavi',
